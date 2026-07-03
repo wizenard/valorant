@@ -1,0 +1,48 @@
+{
+  "id": 13,
+  "name": "斯凯",
+  "eName": "Skye",
+  "twName": "絲凱",
+  "role": "先锋",
+  "description": "“斯凯”来自大洋洲，带着宠物风风火火地穿越敌人领地是她的标志风格。她不仅可以用她的造物牵制敌人，还能治疗队友，是小队中攻守兼备的一员。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "愈生之息",
+      "typeName": "基础技能",
+      "cost": "150",
+      "icon": "C_愈生之息_icon.png",
+      "video": "C_愈生之息_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "辟林之虎",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "Q_辟林之虎_icon.png",
+      "video": "Q_辟林之虎_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "引路之隼",
+      "typeName": "招牌技能",
+      "cost": "250",
+      "icon": "E_引路之隼_icon.png",
+      "video": "E_引路之隼_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "追猎之灵",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_追猎之灵_icon.png",
+      "video": "X_追猎之灵_video.mp4"
+    }
+  ]
+}

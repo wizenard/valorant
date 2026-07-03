@@ -1,0 +1,48 @@
+{
+  "id": 4,
+  "name": "幽影",
+  "eName": "Omen",
+  "twName": "歐門",
+  "role": "控场",
+  "description": "“幽影”是暗影中的狩猎者，关于他的过去只有一段模糊的记忆。他能传送到战场的任意位置，还能剥夺敌人的视野与理智，使其陷入草木皆兵的境地。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "践影",
+      "typeName": "基础技能",
+      "cost": "100",
+      "icon": "C_践影_icon.png",
+      "video": "C_践影_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "暗魇",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "Q_暗魇_icon.png",
+      "video": "Q_暗魇_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "黑瘴",
+      "typeName": "招牌技能",
+      "cost": "第一充能免费，第二充能100",
+      "icon": "E_黑瘴_icon.png",
+      "video": "E_黑瘴_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "离魂",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_离魂_icon.png",
+      "video": "X_离魂_video.mp4"
+    }
+  ]
+}

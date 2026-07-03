@@ -1,0 +1,48 @@
+{
+  "id": 24,
+  "name": "暮蝶",
+  "eName": "Clove",
+  "twName": "珂樂芙",
+  "role": "控场",
+  "description": "来自不列颠群岛北部的\"暮蝶\"擅长用自己的招牌恶作剧来捉弄敌人。即便在被击败后，这位年轻的永生者也能继续干扰敌人，甚至出其不意地返场再战。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "虹吸",
+      "typeName": "基础技能",
+      "cost": "100",
+      "icon": "C_虹吸_icon.png",
+      "video": "C_虹吸_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "整蛊",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "Q_整蛊_icon.png",
+      "video": "Q_整蛊_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "霞染",
+      "typeName": "招牌技能",
+      "cost": "第一个充能免费，其余150",
+      "icon": "E_霞染_icon.png",
+      "video": "E_霞染_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "化蝶",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_化蝶_icon.png",
+      "video": "X_化蝶_video.mp4"
+    }
+  ]
+}

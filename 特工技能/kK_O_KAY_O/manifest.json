@@ -1,0 +1,48 @@
+{
+  "id": 16,
+  "name": "K/O",
+  "eName": "KAY/O",
+  "twName": "KAY/O",
+  "role": "先锋",
+  "description": "K/O是一台战争机器，他被制造出来只有一个目的：消灭源能者。他的能力可以压制敌人的技能，为自己与队友制造战术优势。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "碎片溢出",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_碎片溢出_icon.png",
+      "video": "C_碎片溢出_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "闪存过载",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "Q_闪存过载_icon.png",
+      "video": "Q_闪存过载_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "零点嗅探",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_零点嗅探_icon.png",
+      "video": "E_零点嗅探_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "无效命令",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_无效命令_icon.png",
+      "video": "X_无效命令_video.mp4"
+    }
+  ]
+}

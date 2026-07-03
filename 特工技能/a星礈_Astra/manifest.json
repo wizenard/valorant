@@ -1,0 +1,48 @@
+{
+  "id": 15,
+  "name": "星礈",
+  "eName": "Astra",
+  "twName": "亞星卓",
+  "role": "控场",
+  "description": "来自非洲大陆的“星礈”可以操控宇宙能量来重塑战场。她可以进入星界形态，以超脱凡界的战略眼光洞悉战场，抢在敌人行动之前便占得先机。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "重力之阱",
+      "typeName": "基础技能",
+      "cost": "/",
+      "icon": "C_重力之阱_icon.png",
+      "video": "C_重力之阱_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "新星脉冲",
+      "typeName": "基础技能",
+      "cost": "/",
+      "icon": "Q_新星脉冲_icon.png",
+      "video": "Q_新星脉冲_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "星云/消散",
+      "typeName": "基础技能",
+      "cost": "/",
+      "icon": "E_星云_消散_icon.png",
+      "video": "E_星云_消散_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "星界形态 / 宇宙分裂",
+      "typeName": "招牌技能 / 终极技能",
+      "cost": "第一个充能免费，其余150 / 7个大招点数",
+      "icon": "X_星界形态___宇宙分裂_icon.png",
+      "video": "X_星界形态___宇宙分裂_video.mp4"
+    }
+  ]
+}

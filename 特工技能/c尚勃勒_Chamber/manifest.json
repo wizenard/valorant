@@ -1,0 +1,48 @@
+{
+  "id": 17,
+  "name": "尚勃勒",
+  "eName": "Chamber",
+  "twName": "錢博爾",
+  "role": "哨卫",
+  "description": "穿着考究、装备精良的西欧武器设计师“尚勃勒”非常擅长防守阵线。他会利用强大的自制武器从远处逼退妄图进犯的敌人，同时也为自己的撤退和转移准备了体面的应急方案。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "贵宾限行",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_贵宾限行_icon.png",
+      "video": "C_贵宾限行_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "金牌猎头",
+      "typeName": "基础技能",
+      "cost": "每发子弹150",
+      "icon": "Q_金牌猎头_icon.png",
+      "video": "Q_金牌猎头_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "闪转自如",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_闪转自如_icon.png",
+      "video": "E_闪转自如_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "孤高火力",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_孤高火力_icon.png",
+      "video": "X_孤高火力_video.mp4"
+    }
+  ]
+}

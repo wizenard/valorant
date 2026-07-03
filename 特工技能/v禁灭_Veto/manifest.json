@@ -1,0 +1,48 @@
+{
+  "id": 28,
+  "name": "禁灭",
+  "eName": "Veto",
+  "twName": "維托",
+  "role": "哨卫",
+  "description": "来自西非的“禁灭”是一名压制型英雄，因基因突变获得了超凡力量。禁灭打破了既有的战斗规则，无论敌人使出怎样的手段和科技，在他面前都形同虚设。禁灭出现在战场上时，只有枪法才是你唯一的保障。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "涡流折跃",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_涡流折跃_icon.png",
+      "video": "C_涡流折跃_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "裂变残片",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_裂变残片_icon.png",
+      "video": "Q_裂变残片_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "噬源体",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_噬源体_icon.png",
+      "video": "E_噬源体_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "完全进化",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_完全进化_icon.png",
+      "video": "X_完全进化_video.mp4"
+    }
+  ]
+}

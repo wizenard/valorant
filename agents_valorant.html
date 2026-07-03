@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>无畏契约特工技能总览</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<style>
+/* === Design System: Product Register, Restrained === */
+:root {
+  /* Core palette - deep navy, not black */
+  --bg: #0b1120;
+  --surface: #111827;
+  --surface-2: #1a2332;
+  --surface-3: #1f2b3d;
+  
+  /* Border - subtle, not glowing */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --border-active: rgba(130, 180, 255, 0.3);
+  
+  /* Text hierarchy */
+  --text: #e8edf5;
+  --text-secondary: #8b9bb4;
+  --text-tertiary: #5a6a80;
+  
+  /* Accent - muted blue, not red */
+  --accent: #4a9eff;
+  --accent-soft: rgba(74, 158, 255, 0.12);
+  --accent-hover: #6bb3ff;
+  
+  /* Role colors - desaturated */
+  --duelist: #e85d5d;
+  --initiator: #5db8e8;
+  --controller: #9b6be8;
+  --sentinel: #5de89b;
+  
+  /* Shadows - minimal, functional */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  
+  /* Radius - differentiated, not uniform */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  
+  /* Transitions - functional, not decorative */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font: 14px/1.6 "Inter", "Microsoft YaHei", "PingFang SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { 
+  color: var(--accent); 
+  text-decoration: none;
+}
+a:hover { color: var(--accent-hover); }
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(255, 79, 103, 0.12), transparent 36%),
+    radial-gradient(circle at right, rgba(95, 208, 255, 0.12), transparent 26%),
+    linear-gradient(180deg, #091018 0%, #0b1118 100%);
+  font: 14px/1.65 "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+a { color: #91e0ff; }
+.app {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  min-height: 100vh;
+}
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  padding: 28px 22px;
+  background: rgba(7, 12, 18, 0.88);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+}
+.sidebar h1 {
+  order: -3;
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+}
+.sidebar h1 small {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.intro {
+  order: -2;
+  margin: 16px 0 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+}
+.view-tabs {
+  order: -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.view-tab {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 700;
+  transition: border-color .16s ease, background .16s ease, color .16s ease;
+}
+.view-tab.on {
+  color: white;
+  background: rgba(255, 79, 103, 0.15);
+  border-color: rgba(255, 79, 103, 0.5);
+}
+.sidebar-panel,
+.view-panel {
+  display: block;
+}
+.sidebar-panel.hidden,
+.view-panel.hidden {
+  display: none;
+}
+.sbar input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 14px;
+  background: #0b1219;
+  color: var(--text);
+  outline: none;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 12px;
+}
+.tag {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.tag.on {
+  color: white;
+  background: rgba(255, 79, 103, 0.15);
+  border-color: rgba(255, 79, 103, 0.5);
+}
+.cnt {
+  margin: 10px 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.list {
+  display: grid;
+  gap: 12px;
+}
+.map-side-item {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(20, 31, 43, 0.96), rgba(12, 20, 29, 0.96));
+  cursor: pointer;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.map-side-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(145, 224, 255, 0.35);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+.map-side-item.on {
+  border-color: rgba(255, 79, 103, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 79, 103, 0.2), var(--shadow);
+}
+.map-side-item img {
+  width: 88px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #090d13;
+}
+.map-side-item .n {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f4f8ff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.map-side-item .s {
+  margin-top: 4px;
+  color: #b8c7d9;
+  font-size: 12px;
+}
+.agent {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 14px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(20, 31, 43, 0.96), rgba(12, 20, 29, 0.96));
+  cursor: pointer;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.agent:hover {
+  transform: translateY(-2px);
+  border-color: rgba(145, 224, 255, 0.35);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+.agent.checked {
+  border-color: rgba(255, 79, 103, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 79, 103, 0.2), var(--shadow);
+}
+.agent img {
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #090d13;
+}
+.agent .n {
+  font-size: 19px;
+  font-weight: 700;
+}
+.agent .s {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.meta {
+  margin-top: 9px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 12px;
+  font-weight: 600;
+}
+.main {
+  min-width: 0;
+  height: 100vh;
+  overflow: auto;
+  padding: 28px;
+}
+.no-sel {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--muted);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.hero-top {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow);
+}
+.hero-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 8, 12, 0.92), rgba(5, 8, 12, 0.48) 54%, rgba(5, 8, 12, 0.78));
+}
+.hero-head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px;
+  align-items: center;
+}
+.hero-head img {
+  width: 220px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.18);
+}
+.hero-info h2 {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1;
+}
+.hero-info .en {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.hero-info .role-row {
+  margin-top: 16px;
+}
+.hero-info .desc {
+  margin-top: 16px;
+  max-width: 900px;
+  font-size: 16px;
+  color: #e8f0fb;
+}
+.hero-info .src {
+  margin-top: 10px;
+  color: #b4c7dc;
+  font-size: 13px;
+}
+.skill-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+.skill-tabs button {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+.skill-tabs button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(145, 224, 255, 0.35);
+}
+.skill-tabs button.on {
+  background: linear-gradient(180deg, rgba(255, 79, 103, 0.18), rgba(255, 79, 103, 0.08));
+  border-color: rgba(255, 79, 103, 0.55);
+}
+.skill-tabs img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #0b1219;
+}
+.skill-tabs .key {
+  display: block;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+.skill-tabs .slot {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.skill-panel {
+  display: none;
+  margin-bottom: 18px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(180deg, rgba(18, 27, 38, 0.98), rgba(10, 16, 24, 0.98));
+  box-shadow: var(--shadow);
+}
+.skill-panel.on {
+  display: block;
+}
+.skill-head {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 18px;
+  padding: 22px 22px 0;
+}
+.skill-head img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #0b1219;
+}
+.skill-copy h3 {
+  margin: 4px 0 8px;
+  font-size: 30px;
+}
+.skill-copy .meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.skill-copy .desc {
+  margin-top: 14px;
+  font-size: 15px;
+  color: #e7eef9;
+}
+.skill-copy .tw-note {
+  margin-top: 12px;
+  color: #b9cce0;
+  font-size: 13px;
+}
+.video-wrap {
+  padding: 18px 22px 22px;
+}
+.video-wrap video {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  background: black;
+}
+.video-meta {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.video-empty {
+  margin: 18px 22px 22px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+.maps-shell {
+  margin-top: 26px;
+  padding: 22px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(95, 208, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(18, 27, 38, 0.98), rgba(10, 16, 24, 0.98));
+  box-shadow: var(--shadow);
+}
+.maps-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.maps-head h2 {
+  margin: 0;
+  font-size: 30px;
+}
+.maps-head p,
+.maps-hint,
+.map-meta,
+.map-list-note,
+.map-empty {
+  color: var(--muted);
+}
+.maps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+.map-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 144px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: #0c141d;
+  cursor: pointer;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.map-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(145, 224, 255, 0.35);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+}
+.map-card.on {
+  border-color: rgba(255, 79, 103, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(255, 79, 103, 0.24), var(--shadow);
+}
+.map-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.map-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 8, 12, 0.06), rgba(5, 8, 12, 0.88));
+}
+.map-card-copy {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  padding: 14px;
+}
+.map-card-copy .n {
+  font-size: 18px;
+  font-weight: 800;
+  color: #f7fbff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+.map-card-copy .s {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(244, 249, 255, 0.92);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+.map-detail {
+  display: none;
+  margin-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px;
+}
+.map-detail.on {
+  display: block;
+}
+.map-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-size: cover;
+  background-position: center;
+}
+.map-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 8, 12, 0.95), rgba(5, 8, 12, 0.35) 58%, rgba(5, 8, 12, 0.82));
+}
+.map-hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 22px;
+}
+.map-hero-copy h3 {
+  margin: 0;
+  font-size: 38px;
+}
+.map-hero-copy .en {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.map-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.map-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+  font-weight: 700;
+}
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) 320px;
+  gap: 18px;
+  margin-top: 18px;
+}
+.map-stage-card,
+.map-list-card {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(9, 14, 21, 0.9);
+}
+.map-stage-head,
+.map-list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 18px 12px;
+}
+.map-stage-head h4,
+.map-list-head h4 {
+  margin: 0;
+  font-size: 18px;
+}
+.map-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.map-toolbar button {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  cursor: pointer;
+}
+.map-stage {
+  position: relative;
+  overflow: hidden;
+  margin: 0 18px 18px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(8, 12, 18, 0.95), rgba(8, 12, 18, 0.95)),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: auto, 36px 36px, 36px 36px;
+  touch-action: none;
+}
+.map-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.map-canvas img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+.map-marker {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 79, 103, 0.88);
+  box-shadow: 0 0 0 6px rgba(255, 79, 103, 0.14);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.map-marker::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 79, 103, 0.45);
+}
+.map-marker.on {
+  background: #5fd0ff;
+  box-shadow: 0 0 0 6px rgba(95, 208, 255, 0.18);
+}
+.map-callouts {
+  display: grid;
+  gap: 8px;
+  max-height: 560px;
+  overflow: auto;
+  padding: 0 18px 18px;
+}
+.map-callout {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 11px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  cursor: pointer;
+}
+.map-callout.on {
+  border-color: rgba(95, 208, 255, 0.45);
+  background: rgba(95, 208, 255, 0.08);
+}
+.map-callout .region {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+.map-empty {
+  padding: 0 18px 18px;
+}
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* Marker pulse animation */
+@keyframes markerPulse {
+  0%, 100% { box-shadow: 0 0 0 4px var(--accent-soft); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.map-marker { animation: markerPulse 2s ease-in-out infinite; }
+
+
+@media (max-width: 1080px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+  .main {
+    height: auto;
+    overflow: visible;
+  }
+  .hero-head {
+    grid-template-columns: 1fr;
+  }
+  .hero-head img {
+    width: min(240px, 100%);
+  }
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 720px) {
+  .sidebar,
+  .main {
+    padding: 18px;
+  }
+  .hero-info h2 {
+    font-size: 34px;
+  }
+  .skill-head {
+    grid-template-columns: 1fr;
+  }
+  .maps-head,
+  .map-stage-head,
+  .map-list-head {
+    align-items: start;
+    flex-direction: column;
+  }
+  .map-hero-copy h3 {
+    font-size: 30px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <h1>无畏契约 <small>Valorant 特工技能总览</small></h1>
+    <div class="intro">
+      当前页面使用本地媒体资源。肖像、背景、技能图标和技能视频已经下载到同目录下的 <strong>特工技能</strong> 文件夹。
+      <br>参考来源：
+      <a href="https://playvalorant.com/zh-tw/agents/" target="_blank" rel="noreferrer">台服特工页</a>
+      ·
+      <a href="https://val.qq.com/game-data.html?pageType=1&&heroId=23" target="_blank" rel="noreferrer">国服游戏官网资料</a>
+    </div>
+    <div class="sbar"><input id="search" placeholder="搜索特工名、英文名、台服名、slug..." oninput="renderList()"></div>
+    <div class="tags" id="tags"></div>
+    <div class="cnt" id="count"></div>
+    <div class="list" id="list"></div>
+    <div class="view-tabs">
+      <button class="view-tab on" id="agentsTab" type="button" onclick="setView('agents')">Agents</button>
+      <button class="view-tab" id="mapsTab" type="button" onclick="setView('maps')">Maps</button>
+    </div>
+    <div class="sidebar-panel hidden" id="mapsSidebarPanel">
+      <div class="sbar"><input id="mapSearch" placeholder="Search maps..." oninput="renderMaps()"></div>
+      <div class="cnt" id="mapCount"></div>
+      <div class="list" id="mapSidebarList"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="no-sel" id="noSel">
+      <div style="font-size:42px; opacity:.18;">VAL</div>
+      <div>选择一名特工查看技能效果、图标和本地演示视频</div>
+    </div>
+    <div id="detail" style="display:none"></div>
+    <section class="maps-shell" id="mapsShell">
+      <div class="map-detail" id="mapDetail"></div>
+    </section>
+  </main>
+</div>
+
+<script src="maps_assets/valorant_maps_data.js"></script>
+<script>
+const AGENTS = [{"id": 1, "name": "铁臂", "eName": "Breach", "slug": "breach", "role": "先锋", "description": "生化改造人“铁臂”来自北欧波罗的海西岸，他能够使用定向爆破和动能冲击从敌阵中强行打开一条通道。他从来不跟敌人讲道理，火力和爆破就是硬道理。", "portrait": "特工技能/b铁臂_Breach/portrait.png", "background": "特工技能/b铁臂_Breach/background.png", "twName": "叛奇", "aliases": "铁臂 Breach 叛奇 叛奇 breach", "skills": [{"key": "C", "slotKey": "C", "name": "剧震余波", "description": "装备聚变炸药。按【射击】即可透过墙壁引发一次延时生效的爆破。该冲击会对作用范围内的所有人造成严重伤害。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/b铁臂_Breach/C_剧震余波_icon.png", "video": "特工技能/b铁臂_Breach/C_剧震余波_video.mp4", "twName": "射線餘波"}, {"key": "Q", "slotKey": "Q", "name": "闪点爆破", "description": "装备【致盲】炸药。按【射击】即可在墙壁的另一侧引发一次爆破，【致盲】所有目击爆破点的玩家。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/b铁臂_Breach/Q_闪点爆破_icon.png", "video": "特工技能/b铁臂_Breach/Q_闪点爆破_video.mp4", "twName": "致盲閃光"}, {"key": "E", "slotKey": "E", "name": "山崩地陷", "description": "装备震波冲击器。【按住射击】可增加射程，【松开】便可引发震荡，使直线范围内的玩家受到【震荡】。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/b铁臂_Breach/E_山崩地陷_icon.png", "video": "特工技能/b铁臂_Breach/E_山崩地陷_video.mp4", "twName": "震動斷層"}, {"key": "X", "slotKey": "X", "name": "惊雷卷地", "description": "装备震波炸药。按【射击】在巨大的锥形范围内发出一道穿越地形、层层递进的地震波，击飞和【震荡】受波及的玩家。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/b铁臂_Breach/X_惊雷卷地_icon.png", "video": "特工技能/b铁臂_Breach/X_惊雷卷地_video.mp4", "twName": "撼地轟雷"}], "assetFolder": "特工技能/b铁臂_Breach"}, {"id": 2, "name": "捷风", "eName": "Jett", "slug": "jett", "role": "决斗", "description": "“捷风”是新罗人的后代，她灵活机动的战斗风格使她能够采取比常人更激进和冒险的策略。她可以在战场上肆意纵横，将敌人逐个击破，或是把他们打个措手不及。", "portrait": "特工技能/j捷风_Jett/portrait.png", "background": "特工技能/j捷风_Jett/background.png", "twName": "婕提", "aliases": "捷风 Jett 婕提 婕提 jett", "skills": [{"key": "SPACE", "slotKey": "P", "name": "飘移", "description": "在坠下的时候按住跳跃键可以让捷风在空中滑翔", "typeName": "被动技能", "cost": "/", "icon": "特工技能/j捷风_Jett/P_飘移_icon.png", "video": "", "twName": ""}, {"key": "C", "slotKey": "C", "name": "瞬云", "description": "投掷一个发射物，其在触碰后可扩展成一朵能短暂阻挡视线的云雾。按住技能键能扭曲云雾至准星的方向。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/j捷风_Jett/C_瞬云_icon.png", "video": "特工技能/j捷风_Jett/C_瞬云_video.mp4", "twName": "穿雲衝刺"}, {"key": "Q", "slotKey": "Q", "name": "凌空", "description": "立即腾空直上，高高跃起。", "typeName": "基础技能", "cost": "150", "icon": "特工技能/j捷风_Jett/Q_凌空_icon.png", "video": "特工技能/j捷风_Jett/Q_凌空_video.mp4", "twName": "乘風飛躍"}, {"key": "E", "slotKey": "E", "name": "逐风", "description": "【激活】即可在限定时间内刮起阵风。【再次使用】该技能可朝移动方向突进。若站立不动，则向面朝的方向突进。每击败两名敌人，可重置【逐风】的充能。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/j捷风_Jett/E_逐风_icon.png", "video": "特工技能/j捷风_Jett/E_逐风_video.mp4", "twName": "順風式"}, {"key": "X", "slotKey": "X", "name": "飓刃", "description": "装备一组飞刀，按【射击】向目标掷出一把飞刀，击败敌人即可重新充能所有飞刀。按【辅助射击】向你的目标抛掷所有剩余的飞刀，但这样做无法通过击败敌人获得充能。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/j捷风_Jett/X_飓刃_icon.png", "video": "特工技能/j捷风_Jett/X_飓刃_video.mp4", "twName": "暴風旋刃"}], "assetFolder": "特工技能/j捷风_Jett"}, {"id": 3, "name": "雷兹", "eName": "Raze", "slug": "raze", "role": "决斗", "description": "“雷兹”轰轰烈烈地离开了亚马逊平原。她的性情就跟其武器一样火爆，她的作战风格简单粗暴、爆发力十足。无论是攻坚战还是狭小空间的遭遇战，都是她的拿手好戏。", "portrait": "特工技能/r雷兹_Raze/portrait.png", "background": "特工技能/r雷兹_Raze/background.png", "twName": "芮茲", "aliases": "雷兹 Raze 芮茲 芮茲 raze", "skills": [{"key": "C", "slotKey": "C", "name": "花车巡游", "description": "装备爆弹机器人。按【射击】即可部署机器人，它在地上沿直线行进，并会在碰到墙体后弹开。爆弹机器人会锁定任何在其锥形范围内的敌人并追逐他们，一旦追上便会引爆并造成严重伤害。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/r雷兹_Raze/C_花车巡游_icon.png", "video": "特工技能/r雷兹_Raze/C_花车巡游_video.mp4", "twName": "爆破機器人"}, {"key": "Q", "slotKey": "Q", "name": "惊喜翻腾", "description": "投掷一个可粘在物体表面的炸药包。完成部署后，【再次按技能 键】该技能即可将其引爆，对目标造成伤害和击飞。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/r雷兹_Raze/Q_惊喜翻腾_icon.png", "video": "特工技能/r雷兹_Raze/Q_惊喜翻腾_video.mp4", "twName": "爆破包"}, {"key": "E", "slotKey": "E", "name": "彩雷飞溅", "description": "装备集束手雷。按【射击】投掷手雷，手雷爆炸后会生成子榴 弹，每颗对范围内所有人造成伤害。按【辅助射击】可轻抛。每 击败两名敌人，可重置【彩雷飞溅】的充能。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/r雷兹_Raze/E_彩雷飞溅_icon.png", "video": "特工技能/r雷兹_Raze/E_彩雷飞溅_video.mp4", "twName": "漆彩榴彈"}, {"key": "X", "slotKey": "X", "name": "晚安焰火", "description": "装备火箭发射器。按【射击】即可发射一枚在与任何物体接触时造成大范围伤害的火箭。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/r雷兹_Raze/X_晚安焰火_icon.png", "video": "特工技能/r雷兹_Raze/X_晚安焰火_video.mp4", "twName": "掃興火炮"}], "assetFolder": "特工技能/r雷兹_Raze"}, {"id": 4, "name": "幽影", "eName": "Omen", "slug": "omen", "role": "控场", "description": "“幽影”是暗影中的狩猎者，关于他的过去只有一段模糊的记忆。他能传送到战场的任意位置，还能剥夺敌人的视野与理智，使其陷入草木皆兵的境地。", "portrait": "特工技能/o幽影_Omen/portrait.png", "background": "特工技能/o幽影_Omen/background.png", "twName": "歐門", "aliases": "幽影 Omen 歐門 歐門 omen", "skills": [{"key": "C", "slotKey": "C", "name": "践影", "description": "装备【践影】技能，查看其范围指示器。按【射击】开始引导，然后传送至标记位置。", "typeName": "基础技能", "cost": "100", "icon": "特工技能/o幽影_Omen/C_践影_icon.png", "video": "特工技能/o幽影_Omen/C_践影_video.mp4", "twName": "瞬步鬼影"}, {"key": "Q", "slotKey": "Q", "name": "暗魇", "description": "装备致盲法球。按【射击】将其向前掷出，可使接触到的玩家短暂【致聋】和【视野收缩】。此投掷物可穿透墙体。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/o幽影_Omen/Q_暗魇_icon.png", "video": "特工技能/o幽影_Omen/Q_暗魇_video.mp4", "twName": "夢魘侵襲"}, {"key": "E", "slotKey": "E", "name": "黑瘴", "description": "装备暗影法球，然后进入相位空间为法球选择目标。按【技能键】即可朝标记位置投掷暗影法球，创造一个长时间持续的暗影球体来遮挡视线。瞄准期间，【按住射击】可将标记移远，【按住辅助射击】可将标记移近。按【装填】即可切换至普通瞄准视野。", "typeName": "招牌技能", "cost": "第一充能免费，第二充能100", "icon": "特工技能/o幽影_Omen/E_黑瘴_icon.png", "video": "特工技能/o幽影_Omen/E_黑瘴_video.mp4", "twName": "黑影籠罩"}, {"key": "X", "slotKey": "X", "name": "离魂", "description": "装备战术地图。按【射击】传送至选定位置，传送期间幽影会变为一团阴影，敌人可通过摧毁阴影来强制取消传送，幽影也能按【装备】来取消传送。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/o幽影_Omen/X_离魂_icon.png", "video": "特工技能/o幽影_Omen/X_离魂_video.mp4", "twName": "闇夜襲擊"}], "assetFolder": "特工技能/o幽影_Omen"}, {"id": 5, "name": "炼狱", "eName": "Brimstone", "slug": "brimstone", "role": "控场", "description": "“炼狱”来自美洲大陆，他能使用各种轨道武器来为团队提供精确支援和创造战术优势，是前线指挥官的不二人选。", "portrait": "特工技能/b炼狱_Brimstone/portrait.png", "background": "特工技能/b炼狱_Brimstone/background.png", "twName": "布史東", "aliases": "炼狱 Brimstone 布史東 布史東 brimstone", "skills": [{"key": "C", "slotKey": "C", "name": "振奋信标", "description": "立即向前方投掷振奋信标，它在落地后会生成一片增益区域，给予其中的玩家【作战强化】和【加速】效果。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/b炼狱_Brimstone/C_振奋信标_icon.png", "video": "特工技能/b炼狱_Brimstone/C_振奋信标_video.mp4", "twName": "激勵信號"}, {"key": "Q", "slotKey": "Q", "name": "燃烧榴弹", "description": "装备燃烧弹发射器。按【射击】发射一枚榴弹，在落地停稳后引爆，生成一片持续燃烧的区域，对进入其中的玩家造成伤害。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/b炼狱_Brimstone/Q_燃烧榴弹_icon.png", "video": "特工技能/b炼狱_Brimstone/Q_燃烧榴弹_video.mp4", "twName": "灼人燃彈"}, {"key": "E", "slotKey": "E", "name": "空投烟幕", "description": "装备战术地图。按【射击】设定烟幕落地的位置。按【辅助射击】以确认，呼叫历久不散的烟云来阻碍该选定区域的视野。", "typeName": "招牌技能", "cost": "100", "icon": "特工技能/b炼狱_Brimstone/E_空投烟幕_icon.png", "video": "特工技能/b炼狱_Brimstone/E_空投烟幕_video.mp4", "twName": "垂天煙幕"}, {"key": "X", "slotKey": "X", "name": "天基光束", "description": "装备战术地图。按【射击】向选定位置发射轨道激光炮，对区域内的玩家造成高额持续伤害。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/b炼狱_Brimstone/X_天基光束_icon.png", "video": "特工技能/b炼狱_Brimstone/X_天基光束_video.mp4", "twName": "衛星空襲"}], "assetFolder": "特工技能/b炼狱_Brimstone"}, {"id": 6, "name": "不死鸟", "eName": "Phoenix", "slug": "phoenix", "role": "决斗", "description": "来自不列颠群岛的“不死鸟”举手投足中无处不洋溢着大牌明星风范，他就像一团耀眼的烈焰，动辄燃遍全场。对他来说，有没有后援不重要，冲锋陷阵时的派头更重要。", "portrait": "特工技能/p不死鸟_Phoenix/portrait.png", "background": "特工技能/p不死鸟_Phoenix/background.png", "twName": "菲尼克斯", "aliases": "不死鸟 Phoenix 菲尼克斯 菲尼克斯 phoenix", "skills": [{"key": "C", "slotKey": "C", "name": "火冒三丈", "description": "装备烈焰屏障。按【射击】向前生成一道火墙，可阻挡视野并伤害穿过它的人。不死鸟不会受到火墙的伤害，反而会获得治疗。【按住射击】可使火墙朝你准星的方向卷曲。", "typeName": "基础技能", "cost": "150", "icon": "特工技能/p不死鸟_Phoenix/C_火冒三丈_icon.png", "video": "特工技能/p不死鸟_Phoenix/C_火冒三丈_video.mp4", "twName": "烈炎鐵血"}, {"key": "Q", "slotKey": "Q", "name": "火热手感", "description": "装备一颗火球，按【射击】将其掷出，在落地或一定时间后爆炸，生成一片持续燃烧的区域，对进入其中的敌人造成伤害。不死鸟不会受到燃烧区域的伤害，反而会获得治疗。按【辅助射击】可轻抛。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/p不死鸟_Phoenix/Q_火热手感_icon.png", "video": "特工技能/p不死鸟_Phoenix/Q_火热手感_video.mp4", "twName": "閃光曲球"}, {"key": "E", "slotKey": "E", "name": "闪光曲球", "description": "装备一颗闪光球，投掷后，闪光球沿弧线轨迹飞行并在短时间内爆炸。爆炸时，所有视野内可看到闪光球的玩家均会被【致盲】。按【射击】投掷左曲球，按【辅助射击】投掷右曲球。", "typeName": "招牌技能", "cost": "第一个充能免费，其余250", "icon": "特工技能/p不死鸟_Phoenix/E_闪光曲球_icon.png", "video": "特工技能/p不死鸟_Phoenix/E_闪光曲球_video.mp4", "twName": "赤手烈焰"}, {"key": "X", "slotKey": "X", "name": "再火一回", "description": "立即标记不死鸟的位置。如果他在技能激活期间阵亡，或当技能时效结束，他都会返回该位置满血重生，并且保留技能施放时的护甲值。", "typeName": "终极技能", "cost": "6点大招点数", "icon": "特工技能/p不死鸟_Phoenix/X_再火一回_icon.png", "video": "特工技能/p不死鸟_Phoenix/X_再火一回_video.mp4", "twName": "再來一局"}], "assetFolder": "特工技能/p不死鸟_Phoenix"}, {"id": 7, "name": "贤者", "eName": "Sage", "slug": "sage", "role": "哨卫", "description": "“贤者”是华夏文明的后代，她可以用超能力阻滞敌方攻势、为队友提供保护和治疗，甚至还能复活队友。有她在的地方，就如同是腥风血雨中的一处避风港。", "portrait": "特工技能/s贤者_Sage/portrait.png", "background": "特工技能/s贤者_Sage/background.png", "twName": "聖祈", "aliases": "贤者 Sage 聖祈 聖祈 sage", "skills": [{"key": "C", "slotKey": "C", "name": "玉城", "description": "装备屏障法球，按【射击】来布置一道墙壁，【辅助射击】可旋转目标指示器。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/s贤者_Sage/C_玉城_icon.png", "video": "特工技能/s贤者_Sage/C_玉城_video.mp4", "twName": "屏障靈球"}, {"key": "Q", "slotKey": "Q", "name": "薄冰", "description": "装备减速法球，按【射击】将其掷出，它会在落地时爆开，生成一片持续的【减速】领域，降低其中玩家的移动速度，身处减速区域内的敌人，其冲刺速度将额外降低50%。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/s贤者_Sage/Q_薄冰_icon.png", "video": "特工技能/s贤者_Sage/Q_薄冰_video.mp4", "twName": "緩速靈球"}, {"key": "E", "slotKey": "E", "name": "逢春", "description": "装备治疗法球。按【射击】并用准星对准受伤队友以持续对其进行【治疗】。当贤者受伤时，使用【辅助射击】来【治疗】自己。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/s贤者_Sage/E_逢春_icon.png", "video": "特工技能/s贤者_Sage/E_逢春_video.mp4", "twName": "治癒靈球"}, {"key": "X", "slotKey": "X", "name": "再起", "description": "装备复活技能。瞄准一名倒下的队友按下【射击】，即可在短暂引导后使其满血复活。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/s贤者_Sage/X_再起_icon.png", "video": "特工技能/s贤者_Sage/X_再起_video.mp4", "twName": "起死回生"}], "assetFolder": "特工技能/s贤者_Sage"}, {"id": 8, "name": "猎枭", "eName": "Sova", "slug": "sova", "role": "先锋", "description": "”猎枭“生长于终年严寒的北方冻原。他能够精准而高效地追踪、锁定和歼灭敌人。凭借一把特制战弓和无与伦比的侦察能力，他能让猎物无所遁形、无处可逃。", "portrait": "特工技能/s猎枭_Sova/portrait.png", "background": "特工技能/s猎枭_Sova/background.png", "twName": "蘇法", "aliases": "猎枭 Sova 蘇法 蘇法 sova", "skills": [{"key": "C", "slotKey": "C", "name": "枭型无人机", "description": "装备枭型无人机，按【射击】即可部署并操作无人机，在操作期间按【射击】可发射定位镖，【揭露】所命中目标的位置。枭型无人机可被敌人摧毁。", "typeName": "基础技能", "cost": "400", "icon": "特工技能/s猎枭_Sova/C_枭型无人机_icon.png", "video": "特工技能/s猎枭_Sova/C_枭型无人机_video.mp4", "twName": "夜梟無人機"}, {"key": "Q", "slotKey": "Q", "name": "雷击箭", "description": "装备弓和雷击箭，按【射击】即可将箭矢向前射出，箭矢在碰撞物体后爆炸，对附近的玩家造成伤害。【按住射击】可延长投射距离。按【辅助射击】可为该弩箭增加一次弹射次数，最多两次。", "typeName": "基础技能", "cost": "150", "icon": "特工技能/s猎枭_Sova/Q_雷击箭_icon.png", "video": "特工技能/s猎枭_Sova/Q_雷击箭_video.mp4", "twName": "震波箭"}, {"key": "E", "slotKey": "E", "name": "寻敌箭", "description": "装备弓和寻敌箭，按【射击】即可将箭矢向前射出，箭矢在碰撞物体后激活声纳并【揭露】探测范围内的敌人位置。敌人可摧毁该箭矢。【按住射击】可延长投射距离。按【辅助射击】可为该弩箭增加一次弹射次数，最多两次。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/s猎枭_Sova/E_寻敌箭_icon.png", "video": "特工技能/s猎枭_Sova/E_寻敌箭_video.mp4", "twName": "偵察箭"}, {"key": "X", "slotKey": "X", "name": "狂猎之怒", "description": "装备弓和三发可穿墙的远程能量箭。按【射击】即向猎枭的前方发射一道能量冲击波，对直线上的敌人造成伤害并【揭露】其位置。此技能在计时器结束前可【再次使用】最多两次。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/s猎枭_Sova/X_狂猎之怒_icon.png", "video": "特工技能/s猎枭_Sova/X_狂猎之怒_video.mp4", "twName": "獵者之怒"}], "assetFolder": "特工技能/s猎枭_Sova"}, {"id": 9, "name": "蝰蛇", "eName": "Viper", "slug": "viper", "role": "控场", "description": "“蝰蛇”是一位来自美洲大陆的化学家，擅长部署毒性化学装置来控制战场并削弱敌人的视野。即便猎物没倒在她的毒素之下，她也会利用心理战将其击溃。", "portrait": "特工技能/v蝰蛇_Viper/portrait.png", "background": "特工技能/v蝰蛇_Viper/background.png", "twName": "薇蝮", "aliases": "蝰蛇 Viper 薇蝮 薇蝮 viper", "skills": [{"key": "C", "slotKey": "C", "name": "蛇吻", "description": "装备化学品发射器，按【射击】即可射出一个触地即碎的化学容器，碎裂后会留下一滩化学溶液，对范围内的目标造成伤害并施加【易伤】。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/v蝰蛇_Viper/C_蛇吻_icon.png", "video": "特工技能/v蝰蛇_Viper/C_蛇吻_video.mp4", "twName": "蛇咬毒液"}, {"key": "Q", "slotKey": "Q", "name": "瘴云", "description": "装备气雾喷射器，按【射击】 将其掷出，该装置会一直存在至回合结束。按【辅助射击】 可轻抛。【再次按技能键】 可消耗燃料生成一团化学烟雾。回合开始前，可拾取喷射器，将其【重新部署】。在回合中，此技能可以多次【重复使用】。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/v蝰蛇_Viper/Q_瘴云_icon.png", "video": "特工技能/v蝰蛇_Viper/Q_瘴云_video.mp4", "twName": "腐蝕毒霧"}, {"key": "E", "slotKey": "E", "name": "毒幕", "description": "装备可穿越地形的气雾喷射器，按【射击】沿一条直线部署气雾喷射器阵列。【再次按技能键】可消耗燃料产生一道气雾幕墙。此技能可以多次【重复使用】", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/v蝰蛇_Viper/E_毒幕_icon.png", "video": "特工技能/v蝰蛇_Viper/E_毒幕_video.mp4", "twName": "毒雲瘴壁"}, {"key": "X", "slotKey": "X", "name": "蝰腹", "description": "装备化学喷雾器。按【射击】即可朝蝰蛇的四周喷射化学气雾，产生大片云雾，使范围内的玩家【视野收缩】并使敌人受到【腐坏】效果。【按住技能键】可使气雾提前消散。", "typeName": "终极技能", "cost": "9点大招点数", "icon": "特工技能/v蝰蛇_Viper/X_蝰腹_icon.png", "video": "特工技能/v蝰蛇_Viper/X_蝰腹_video.mp4", "twName": "蝮蛇領域"}], "assetFolder": "特工技能/v蝰蛇_Viper"}, {"id": 10, "name": "零", "eName": "Cypher", "slug": "cypher", "role": "哨卫", "description": "情报贩子“零”来自直布罗陀海峡南岸，他堪比人形情报网络，紧密地监视着敌人的一举一动。在他的眼皮底下没有秘密，也没有人能瞒天过海。", "portrait": "特工技能/c零_Cypher/portrait.png", "background": "特工技能/c零_Cypher/background.png", "twName": "瑟符", "aliases": "零 Cypher 瑟符 瑟符 cypher", "skills": [{"key": "C", "slotKey": "C", "name": "震慑绊线", "description": "装备绊线。按【射击】在目标位置与相对的墙体之间形成一条可摧毁的隐蔽绊线。玩家一跨过震慑绊线便会立即受到减速效果。绊线将在0.9秒后激活，若未及时摧毁，或玩家移动至距离触发点4米外，则其位置将被揭露。此装置可被回收并【重新部署】。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/c零_Cypher/C_震慑绊线_icon.png", "video": "特工技能/c零_Cypher/C_震慑绊线_video.mp4", "twName": "陷阱絆索"}, {"key": "Q", "slotKey": "Q", "name": "赛博囚笼", "description": "向前方投掷赛博囚笼。【激活】即可生成一片阻碍视野的区域，敌人通过时会发出提示音。", "typeName": "基础技能", "cost": "100", "icon": "特工技能/c零_Cypher/Q_赛博囚笼_icon.png", "video": "特工技能/c零_Cypher/Q_赛博囚笼_video.mp4", "twName": "網戰牢籠"}, {"key": "E", "slotKey": "E", "name": "战术监控", "description": "装备摄像头，按【射击】即可将其布置于目标位置。【再次按技能键】可切换至监控镜头。在使用监控镜头期间按【射击】可发射定位镖，【揭露】所命中目标的位置。此装置可被回收并【重新部署】。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/c零_Cypher/E_战术监控_icon.png", "video": "特工技能/c零_Cypher/E_战术监控_video.mp4", "twName": "監控攝影機"}, {"key": "X", "slotKey": "X", "name": "神经取析", "description": "对被击败的敌方玩家使用本技能，即可获取敌方队伍的信息。短暂延迟后，【揭露】所有存活敌方玩家的位置两次。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/c零_Cypher/X_神经取析_icon.png", "video": "特工技能/c零_Cypher/X_神经取析_video.mp4", "twName": "神經駭客"}], "assetFolder": "特工技能/c零_Cypher"}, {"id": 11, "name": "芮娜", "eName": "Reyna", "slug": "reyna", "role": "决斗", "description": "“芮娜”的威名铸就于马德雷山脉。虽然初始技能有所限制，但她能在狭路相逢的决斗中变得越来越强，直至觉醒强大的超能力，这使得她的实战表现格外重要。", "portrait": "特工技能/r芮娜_Reyna/portrait.png", "background": "特工技能/r芮娜_Reyna/background.png", "twName": "蕾娜", "aliases": "芮娜 Reyna 蕾娜 蕾娜 reyna", "skills": [{"key": "C", "slotKey": "C", "name": "睥睨", "description": "装备一颗可被摧毁的虚灵之眼，【激活】将其向前掷出一段距 离，使看见此眼球的敌人【视野收缩】。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/r芮娜_Reyna/C_睥睨_icon.png", "video": "特工技能/r芮娜_Reyna/C_睥睨_video.mp4", "twName": "邪媚凝視"}, {"key": "Q", "slotKey": "Q", "name": "噬尽", "description": "狩魂:被芮娜造成伤害的3秒内被击败的敌人将留下魂珠，持续 3秒。 噬尽:立即吞噬邻近的一颗魂珠并迅速获得【治疗】。在【女皇 旨令】激活时，此技能将自动施放且不会消耗魂珠。", "typeName": "招牌技能", "cost": "200", "icon": "特工技能/r芮娜_Reyna/Q_噬尽_icon.png", "video": "特工技能/r芮娜_Reyna/Q_噬尽_video.mp4", "twName": "大快朵頤"}, {"key": "E", "slotKey": "E", "name": "逐散", "description": "立即吞噬邻近的魂珠，在短时间内变得【无形】。在【女皇旨令】激活时，此技能还会使你【隐形】。", "typeName": "招牌技能", "cost": "200", "icon": "特工技能/r芮娜_Reyna/E_逐散_icon.png", "video": "特工技能/r芮娜_Reyna/E_逐散_video.mp4", "twName": "關閉"}, {"key": "X", "slotKey": "X", "name": "女皇旨令", "description": "进入狂暴状态，获得【作战强化】效果，大幅度提升射击、装备 与换弹速度，可以不限次数地使用【噬尽】技能。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/r芮娜_Reyna/X_女皇旨令_icon.png", "video": "特工技能/r芮娜_Reyna/X_女皇旨令_video.mp4", "twName": "無上女皇"}], "assetFolder": "特工技能/r芮娜_Reyna"}, {"id": 12, "name": "奇乐", "eName": "Killjoy", "slug": "killjoy", "role": "哨卫", "description": "“奇乐”是来自莱茵河畔的天才发明家，她擅长使用陷阱、炮台和地雷来控制和防守战场上的关键位置。敌人若是不懂知难而退，便会发现这些装置个头虽小，制造的麻烦却很大。", "portrait": "特工技能/k奇乐_Killjoy/portrait.png", "background": "特工技能/k奇乐_Killjoy/background.png", "twName": "愷宙", "aliases": "奇乐 Killjoy 愷宙 愷宙 killjoy", "skills": [{"key": "C", "slotKey": "C", "name": "纳米蜂群", "description": "装备纳米蜂群手雷，按【射击】将其掷出。蜂群手雷会在落地后隐形。按【辅助射击】可轻抛。【激活】纳米蜂群即可部署一群纳米机器人，造成伤害。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/k奇乐_Killjoy/C_纳米蜂群_icon.png", "video": "特工技能/k奇乐_Killjoy/C_纳米蜂群_video.mp4", "twName": "奈米機器蟲"}, {"key": "Q", "slotKey": "Q", "name": "自动哨兵", "description": "装备隐形的自动哨兵。按【射击】可部署机器人来追踪进入范围的敌人。机器人会在接触目标后爆炸，造成伤害并施加【易伤】效果。【按住技能键】可召回已部署的机器人。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/k奇乐_Killjoy/Q_自动哨兵_icon.png", "video": "特工技能/k奇乐_Killjoy/Q_自动哨兵_video.mp4", "twName": "電偵追擊號"}, {"key": "E", "slotKey": "E", "name": "哨戒炮台", "description": "装备炮台，按【射击】即可部署，向100度范围内的敌人开火。按【辅助射击】可转换炮台方向。按住【装备】可召回已部署的炮台。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/k奇乐_Killjoy/E_哨戒炮台_icon.png", "video": "特工技能/k奇乐_Killjoy/E_哨戒炮台_video.mp4", "twName": "重火力砲塔"}, {"key": "X", "slotKey": "X", "name": "全面封锁", "description": "装备封锁装置。按【射击】进行部署。在长时间的启动后，束缚有效半径内的所有敌人。该装置可被敌人摧毁。", "typeName": "终极技能", "cost": "9点大招点数", "icon": "特工技能/k奇乐_Killjoy/X_全面封锁_icon.png", "video": "特工技能/k奇乐_Killjoy/X_全面封锁_video.mp4", "twName": "全面封鎖"}], "assetFolder": "特工技能/k奇乐_Killjoy"}, {"id": 13, "name": "斯凯", "eName": "Skye", "slug": "skye", "role": "先锋", "description": "“斯凯”来自大洋洲，带着宠物风风火火地穿越敌人领地是她的标志风格。她不仅可以用她的造物牵制敌人，还能治疗队友，是小队中攻守兼备的一员。", "portrait": "特工技能/s斯凯_Skye/portrait.png", "background": "特工技能/s斯凯_Skye/background.png", "twName": "絲凱", "aliases": "斯凯 Skye 絲凱 絲凱 skye", "skills": [{"key": "C", "slotKey": "C", "name": "愈生之息", "description": "装备治疗雕饰，【按住射击】开始输出，【治疗】技能范围内且在视线内的队友。在治疗池耗尽前，此技能可重复使用。斯凯无法治疗自己。", "typeName": "基础技能", "cost": "150", "icon": "特工技能/s斯凯_Skye/C_愈生之息_icon.png", "video": "特工技能/s斯凯_Skye/C_愈生之息_video.mp4", "twName": "萌芽重生"}, {"key": "Q", "slotKey": "Q", "name": "辟林之虎", "description": "装备袋狼雕饰，按【射击】放出并控制一只兽形造物，在控制期间按【射击】可向前扑出。兽形造物会在碰撞后引爆，对直接命中的敌人造成【震荡】和伤害。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/s斯凯_Skye/Q_辟林之虎_icon.png", "video": "特工技能/s斯凯_Skye/Q_辟林之虎_video.mp4", "twName": "開路狼鋒"}, {"key": "E", "slotKey": "E", "name": "引路之隼", "description": "装备飞鹰雕饰，按【射击】将其放出。【按住射击】可以让飞鹰向准星的方向转弯，【再次按技能键】可以让飞鹰化作闪光弹。闪光弹在飞鹰飞行一小段时间后即可达到最大效能。", "typeName": "招牌技能", "cost": "250", "icon": "特工技能/s斯凯_Skye/E_引路之隼_icon.png", "video": "特工技能/s斯凯_Skye/E_引路之隼_video.mp4", "twName": "引導之鷹"}, {"key": "X", "slotKey": "X", "name": "追猎之灵", "description": "装备追猎者雕饰。按【射击】即可派出三个追猎之灵，对三名距离最近的敌人进行追踪。如果追寻者接触到目标，即可使其【视野收缩】。追猎之灵可被敌人摧毁。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/s斯凯_Skye/X_追猎之灵_icon.png", "video": "特工技能/s斯凯_Skye/X_追猎之灵_video.mp4", "twName": "追獵精靈"}], "assetFolder": "特工技能/s斯凯_Skye"}, {"id": 14, "name": "夜露", "eName": "Yoru", "slug": "yoru", "role": "决斗", "description": "来自东亚的“夜露”能够直接撕裂现实空间，无声无息地渗透敌人的防线。他在战斗中喜欢虚实结合，在敌人尚未猜到他的位置时发动突然袭击。", "portrait": "特工技能/y夜露_Yoru/portrait.png", "background": "特工技能/y夜露_Yoru/background.png", "twName": "夜戮", "aliases": "夜露 Yoru 夜戮 夜戮 yoru", "skills": [{"key": "C", "slotKey": "C", "name": "出其不意", "description": "装备一个启动时变为夜露外形的回声镜像，【射击】即可激活镜像并令其前进，【辅助射击】则可放置一个未激活的回声镜像，【按下技能键】可激活之前未激活的镜像并使其前进。镜像被敌人摧毁时，会放出【致盲】闪光。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/y夜露_Yoru/C_出其不意_icon.png", "video": "特工技能/y夜露_Yoru/C_出其不意_video.mp4", "twName": "C: 聲東擊西"}, {"key": "Q", "slotKey": "Q", "name": "攻其不备", "description": "从现实中撕下一块不稳定的空间碎片。按【射击】掷出碎片，在它与坚硬表面碰撞后，会变成一颗闪光弹。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/y夜露_Yoru/Q_攻其不备_icon.png", "video": "特工技能/y夜露_Yoru/Q_攻其不备_video.mp4", "twName": "Q: 攻其不備"}, {"key": "E", "slotKey": "E", "name": "不请自来", "description": "装备裂隙锚索，【射击】使其向前射出，【辅助射击】可放置固定锚索。【激活】此技能可以将自己传送到锚索的位置。按下【使用】可触发佯装传送。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/y夜露_Yoru/E_不请自来_icon.png", "video": "特工技能/y夜露_Yoru/E_不请自来_video.mp4", "twName": "E: 不請自來"}, {"key": "X", "slotKey": "X", "name": "神鬼不觉", "description": "装备一个可穿越位面的面具。按【射击】即可进入夜露的位面，不会被外界的敌人看见或影响。【再次激活】技能即可提前离开夜露的位面。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/y夜露_Yoru/X_神鬼不觉_icon.png", "video": "特工技能/y夜露_Yoru/X_神鬼不觉_video.mp4", "twName": "X: 次元飄移"}], "assetFolder": "特工技能/y夜露_Yoru"}, {"id": 15, "name": "星礈", "eName": "Astra", "slug": "astra", "role": "控场", "description": "来自非洲大陆的“星礈”可以操控宇宙能量来重塑战场。她可以进入星界形态，以超脱凡界的战略眼光洞悉战场，抢在敌人行动之前便占得先机。", "portrait": "特工技能/a星礈_Astra/portrait.png", "background": "特工技能/a星礈_Astra/background.png", "twName": "亞星卓", "aliases": "星礈 Astra 亞星卓 亞星卓 astra", "skills": [{"key": "C", "slotKey": "C", "name": "重力之阱", "description": "进入星界形态（终极技能键）并放置星体。【激活】一颗星体，将其转化为重力之阱。处于该区域内的玩家会被拉向中心点，随后重力之阱引爆，对陷入其中的所有玩家施加【易伤】效果。", "typeName": "基础技能", "cost": "/", "icon": "特工技能/a星礈_Astra/C_重力之阱_icon.png", "video": "特工技能/a星礈_Astra/C_重力之阱_video.mp4", "twName": "引力黑洞"}, {"key": "Q", "slotKey": "Q", "name": "新星脉冲", "description": "进入星界形态（终极技能键）并放置星体。￼￼【激活】一颗星体，引发一次新星脉冲。新星脉冲会在短暂充能后爆发，使范围内的所有玩家受到【震荡】。", "typeName": "基础技能", "cost": "/", "icon": "特工技能/a星礈_Astra/Q_新星脉冲_icon.png", "video": "特工技能/a星礈_Astra/Q_新星脉冲_video.mp4", "twName": "新星震盪"}, {"key": "E", "slotKey": "E", "name": "星云/消散", "description": "进入星界形态（终极技能键）并放置星体。 【激活】一颗星体，将其转化为星云（烟雾）。 对星体按【使用】键即可将其驱散和回收，以便在一段时间后重新布置。 驱散星云后，其所在位置仍会短暂存续一片混淆视听的假星云，直至星体回收完毕。", "typeName": "基础技能", "cost": "/", "icon": "特工技能/a星礈_Astra/E_星云_消散_icon.png", "video": "特工技能/a星礈_Astra/E_星云_消散_video.mp4", "twName": "百變星雲"}, {"key": "X", "slotKey": "X", "name": "星界形态 / 宇宙分裂", "description": "激活该技能可进入星界形态，在此状态下按【射击】即可放置星体。随后你可重新激活星体，将其转化为【新星脉冲】【星云】或【重力之阱】。<br><br>当【宇宙分裂】充能完毕时，你可在星体形态下使用【辅助射击】进行瞄准，然后按【射击】选择两个位置。一道无边无际的宇宙裂隙会在两个位置之间生成，阻挡所有子弹并完全阻隔声音的传播。", "typeName": "招牌技能 / 终极技能", "cost": "第一个充能免费，其余150 / 7个大招点数", "icon": "特工技能/a星礈_Astra/X_星界形态___宇宙分裂_icon.png", "video": "特工技能/a星礈_Astra/X_星界形态___宇宙分裂_video.mp4", "twName": "星體型態／無垠星幕"}], "assetFolder": "特工技能/a星礈_Astra"}, {"id": 16, "name": "K/O", "eName": "KAY/O", "slug": "kay-o", "role": "先锋", "description": "K/O是一台战争机器，他被制造出来只有一个目的：消灭源能者。他的能力可以压制敌人的技能，为自己与队友制造战术优势。", "portrait": "特工技能/kK_O_KAY_O/portrait.png", "background": "特工技能/kK_O_KAY_O/background.png", "twName": "KAY/O", "aliases": "K/O KAY/O KAY/O KAY/O kay-o", "skills": [{"key": "C", "slotKey": "C", "name": "碎片溢出", "description": "装备一枚碎片手雷。按【射击】将其掷出。按【辅助射击】可轻抛。手雷会粘在地上并多次引爆，每次爆炸对范围中心造成高额伤害。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/kK_O_KAY_O/C_碎片溢出_icon.png", "video": "特工技能/kK_O_KAY_O/C_碎片溢出_video.mp4", "twName": "碎片/絕殺"}, {"key": "Q", "slotKey": "Q", "name": "闪存过载", "description": "装备闪光榴弹。按【射击】上手投掷。闪光榴弹会在短暂停留后引爆，将拥有视线的所有人【致盲】。按【辅助射击】可轻抛，掷出一颗效力较弱但引爆更快的闪光弹。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/kK_O_KAY_O/Q_闪存过载_icon.png", "video": "特工技能/kK_O_KAY_O/Q_闪存过载_video.mp4", "twName": "閃光/驅動"}, {"key": "E", "slotKey": "E", "name": "零点嗅探", "description": "装备一把压制匕首。按【射击】将其掷出。匕首将粘附在碰到的首个表面，在一段引导时间后对其范围内的所有人造成【压制】。匕首可被敌人摧毁。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/kK_O_KAY_O/E_零点嗅探_icon.png", "video": "特工技能/kK_O_KAY_O/E_零点嗅探_video.mp4", "twName": "歸零/零點"}, {"key": "X", "slotKey": "X", "name": "无效命令", "description": "立即超载极化源晶能量，从K/O身上发射出大范围的能量脉冲。被脉冲击中的敌人会在短时间内受到【压制】。在超载期间，K/O获得【作战强化】状态，并能在被击倒后重启再战。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/kK_O_KAY_O/X_无效命令_icon.png", "video": "特工技能/kK_O_KAY_O/X_无效命令_video.mp4", "twName": "無效/指令"}], "assetFolder": "特工技能/kK_O_KAY_O"}, {"id": 17, "name": "尚勃勒", "eName": "Chamber", "slug": "chamber", "role": "哨卫", "description": "穿着考究、装备精良的西欧武器设计师“尚勃勒”非常擅长防守阵线。他会利用强大的自制武器从远处逼退妄图进犯的敌人，同时也为自己的撤退和转移准备了体面的应急方案。", "portrait": "特工技能/c尚勃勒_Chamber/portrait.png", "background": "特工技能/c尚勃勒_Chamber/background.png", "twName": "錢博爾", "aliases": "尚勃勒 Chamber 錢博爾 錢博爾 chamber", "skills": [{"key": "C", "slotKey": "C", "name": "贵宾限行", "description": "装备一个可以扫描敌人的陷阱。按【射击】将其放置在地面上。非隐形的敌人进入扫描范围时，陷阱将开始倒计时并使周围地面陷入不稳定状态，生成一片持续存在的力场，使范围内所有的玩家【减速】。陷阱可被拾起并【重新部署】", "typeName": "基础技能", "cost": "200", "icon": "特工技能/c尚勃勒_Chamber/C_贵宾限行_icon.png", "video": "特工技能/c尚勃勒_Chamber/C_贵宾限行_video.mp4", "twName": "慢行特區"}, {"key": "Q", "slotKey": "Q", "name": "金牌猎头", "description": "激活后装备一把重型手枪。可使用【辅助射击】开镜瞄准。", "typeName": "基础技能", "cost": "每发子弹150", "icon": "特工技能/c尚勃勒_Chamber/Q_金牌猎头_icon.png", "video": "特工技能/c尚勃勒_Chamber/Q_金牌猎头_video.mp4", "twName": "獵頭手槍"}, {"key": "E", "slotKey": "E", "name": "闪转自如", "description": "放置一个传送锚点。处于锚点范围内的地面上时，【再次激活】技能即可快速传送到锚点处。锚点可被拾起并【重新部署】。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/c尚勃勒_Chamber/E_闪转自如_icon.png", "video": "特工技能/c尚勃勒_Chamber/E_闪转自如_video.mp4", "twName": "法式轉移"}, {"key": "X", "slotKey": "X", "name": "孤高火力", "description": "【激活】技能可召唤一把威力强大的定制狙击枪，命中敌人上半身任何部位均可将其击败。按【辅助射击】可使用瞄准镜。被击败的敌人会留下一片持续存在的力场，使范围内的所有玩家【减速】。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/c尚勃勒_Chamber/X_孤高火力_icon.png", "video": "特工技能/c尚勃勒_Chamber/X_孤高火力_video.mp4", "twName": "浪漫狙殺"}], "assetFolder": "特工技能/c尚勃勒_Chamber"}, {"id": 18, "name": "霓虹", "eName": "Neon", "slug": "neon", "role": "决斗", "description": "来自西太平洋群岛的“霓虹”拥有惊人的速度，可以在运动中产生和释放生物电能量。她擅长利用快速机动，以闪电般的效率把敌人打得措手不及。", "portrait": "特工技能/n霓虹_Neon/portrait.png", "background": "特工技能/n霓虹_Neon/background.png", "twName": "妮虹", "aliases": "霓虹 Neon 妮虹 妮虹 neon", "skills": [{"key": "C", "slotKey": "C", "name": "高速通道", "description": "向前发射两条能量线，它们随后会变成两道阻挡视线的静电墙。 能量线只能向前延伸一小段距离，且会被墙面阻挡。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/n霓虹_Neon/C_高速通道_icon.png", "video": "特工技能/n霓虹_Neon/C_高速通道_video.mp4", "twName": "加速電牆"}, {"key": "Q", "slotKey": "Q", "name": "闪电弹球", "description": "立即掷出一个能量箭，可反弹一次。每次击中表面时，能量箭都会造成【震荡】冲击，同时使其下方的地面通电。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/n霓虹_Neon/Q_闪电弹球_icon.png", "video": "特工技能/n霓虹_Neon/Q_闪电弹球_video.mp4", "twName": "閃電傳導"}, {"key": "E", "slotKey": "E", "name": "充能疾驰", "description": "引导霓虹的力量，立即提升移动速度。充能完毕时，按【辅助射击】即可发动闪电滑行。每击败两名敌人，可重置滑行的充能。", "typeName": "招牌技能", "cost": "150", "icon": "特工技能/n霓虹_Neon/E_充能疾驰_icon.png", "video": "特工技能/n霓虹_Neon/E_充能疾驰_video.mp4", "twName": "極速快檔"}, {"key": "X", "slotKey": "X", "name": "超限暴走", "description": "短时间内释放霓虹的全部力量与速度。按【射击】即可引导她的力量，发射一道高速且精准的闪电光束。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/n霓虹_Neon/X_超限暴走_icon.png", "video": "特工技能/n霓虹_Neon/X_超限暴走_video.mp4", "twName": "電能超載"}], "assetFolder": "特工技能/n霓虹_Neon"}, {"id": 19, "name": "黑梦", "eName": "Fade", "slug": "fade", "role": "先锋", "description": "“黑梦”是来自小亚细亚地区的赏金猎人，她能够操纵纯粹的噩梦能量，揭开他人心底潜藏的恐惧和秘密。她会如梦魇般对敌人穷追不舍，然后在黑暗中将其摧毁殆尽。", "portrait": "特工技能/f黑梦_Fade/portrait.png", "background": "特工技能/f黑梦_Fade/background.png", "twName": "菲德", "aliases": "黑梦 Fade 菲德 菲德 fade", "skills": [{"key": "C", "slotKey": "C", "name": "黯兽", "description": "装备一只黯兽。按【射击】使其向前扑出，【按住射击】可引导黯兽朝准星前进。黯兽将追击它所看到的第一个敌人或追踪恐惧轨迹，并在碰触到敌人时使其【视野收缩】。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/f黑梦_Fade/C_黯兽_icon.png", "video": "特工技能/f黑梦_Fade/C_黯兽_video.mp4", "twName": "潛行夢魔"}, {"key": "Q", "slotKey": "Q", "name": "幽爪", "description": "将恐惧之力具象化为一根套索，按【射击】将其掷出。套索会在一段时间后下落，【再次按技能键】可使它提前下落。套索会在碰触到地面后炸裂，将附近的敌人束缚在原地，并对其施加【致聋】和【腐坏】效果。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/f黑梦_Fade/Q_幽爪_icon.png", "video": "特工技能/f黑梦_Fade/Q_幽爪_video.mp4", "twName": "咒縛夢魘"}, {"key": "E", "slotKey": "E", "name": "诡眼", "description": "装备一颗诡眼。按【射击】将其掷出。诡眼会在一段时间后下落，【再次按技能键】 可使它提前下落。诡眼会在碰触到地面后爆裂，【揭露】其视线范围内的所有敌人，并使他们留下恐惧轨迹。诡眼可被敌人摧毁。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/f黑梦_Fade/E_诡眼_icon.png", "video": "特工技能/f黑梦_Fade/E_诡眼_video.mp4", "twName": "惡夢幽魂"}, {"key": "X", "slotKey": "X", "name": "夜临", "description": "引导噩梦本源的力量，按【射击】释放出排山倒海般的噩梦能量。被波及的敌人会被恐惧轨迹【标记】、并受到【致聋】和【腐坏】效果。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/f黑梦_Fade/X_夜临_icon.png", "video": "特工技能/f黑梦_Fade/X_夜临_video.mp4", "twName": "夜幕降臨"}], "assetFolder": "特工技能/f黑梦_Fade"}, {"id": 20, "name": "海神", "eName": "Harbor", "slug": "harbor", "role": "控场", "description": "“海神”来自印度洋沿岸，借助古代科技的力量，他能够灵活地控制水的形态，释放出激流和巨浪来保护队友或击溃敌人。", "portrait": "特工技能/h海神_Harbor/portrait.png", "background": "特工技能/h海神_Harbor/background.png", "twName": "哈泊", "aliases": "海神 Harbor 哈泊 哈泊 harbor", "skills": [{"key": "C", "slotKey": "C", "name": "乱涌", "description": "装备乱涌。按【射击】向前投掷，制造一股具有强大破坏力的漩流，短时间后使漩流内的敌人受到【视野收缩】和【减速】。", "typeName": "基础技能", "cost": "150", "icon": "特工技能/h海神_Harbor/C_乱涌_icon.png", "video": "特工技能/h海神_Harbor/C_乱涌_video.mp4", "twName": "防彈海灣（防彈水霧）"}, {"key": "Q", "slotKey": "Q", "name": "狂潮", "description": "装备一道水墙，按【射击】使水墙向前延展，【按住射击】可使水墙朝准星方向卷曲，沿路生成一道可以穿过环境物体的水墙。改变方向时按【辅助射击】可提前结束水流。被命中的玩家将受到【减速】。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/h海神_Harbor/Q_狂潮_icon.png", "video": "特工技能/h海神_Harbor/Q_狂潮_video.mp4", "twName": "上古水牆"}, {"key": "E", "slotKey": "E", "name": "海盾", "description": "装备海盾。【激活】后在选定位置形成一道水雾。瞄准期间，【按住射击】可将标记移远，【按住辅助射击】可将标记移近。【换弹】即可切换至瞄准视野。【再次激活】技能即可为水雾生成护盾，阻挡所有命中它的子弹。受护盾保护的水雾可被敌人摧毁。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/h海神_Harbor/E_海盾_icon.png", "video": "特工技能/h海神_Harbor/E_海盾_video.mp4", "twName": "驚濤湧浪"}, {"key": "X", "slotKey": "X", "name": "怒涛", "description": "装备怒涛。按【射击】释放圣物的全部力量，激起汹涌水流向前奔涌，被水流命中的敌人会受到【视野收缩】和【减速】。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/h海神_Harbor/X_怒涛_icon.png", "video": "特工技能/h海神_Harbor/X_怒涛_video.mp4", "twName": "湧泉審判"}], "assetFolder": "特工技能/h海神_Harbor"}, {"id": 21, "name": "盖可", "eName": "Gekko", "slug": "gekko", "role": "先锋", "description": "西海岸小伙“盖可”随身带着一群调皮捣蛋的小怪兽。这些小跟班们负责冲在战斗的最前方，给敌人制造各种麻烦。等到盖可追上来后，它们还能回到他身边，然后再次出击。", "portrait": "特工技能/g盖可_Gekko/portrait.png", "background": "特工技能/g盖可_Gekko/background.png", "twName": "蓋克", "aliases": "盖可 Gekko 蓋克 蓋克 gekko", "skills": [{"key": "C", "slotKey": "C", "name": "嗨爆全场", "description": "装备宠物“嗨宝”。按【射击】即可将其掷出。按【辅助射击】可轻抛。落地后，嗨宝会在一大片区域内复制自己，持续造成少量伤害，并在短暂的延迟后爆炸。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/g盖可_Gekko/C_嗨爆全场_icon.png", "video": "特工技能/g盖可_Gekko/C_嗨爆全场_video.mp4", "twName": "爆爆領域"}, {"key": "Q", "slotKey": "Q", "name": "顽皮搭档", "description": "装备宠物“皮蛋”，按【射击】派皮蛋去前方搜寻敌人。发现首名敌人后，皮蛋将对其发射震荡冲击。瞄准爆能器布署区域或已布署的爆能器后，按下【辅助射击】可以派皮蛋前去布署或拆除爆能器。盖可的物品栏中必须拥有爆能器才能进行布署。技能失效后，皮蛋将变回一颗休眠的球体。与球体【互动】即可将其回收，在短暂的冷却时间后可再次获得顽皮搭档充能。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/g盖可_Gekko/Q_顽皮搭档_icon.png", "video": "特工技能/g盖可_Gekko/Q_顽皮搭档_video.mp4", "twName": "震翼鳥人"}, {"key": "E", "slotKey": "E", "name": "炫晕光波", "description": "装备宠物“丢丢”，按【射击】派它飞向天空。丢丢会对视线范围内的敌人使用电浆冲击。被电浆命中的敌人将被【致盲】。技能失效后，丢丢将变回一颗休眠的球体。与球体【互动】即可将其回收，在短暂的冷却时间后可再次获得炫晕光波充能。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/g盖可_Gekko/E_炫晕光波_icon.png", "video": "特工技能/g盖可_Gekko/E_炫晕光波_video.mp4", "twName": "頭暈目眩"}, {"key": "X", "slotKey": "X", "name": "无敌超鲨", "description": "装备宠物“鲨鲨”，按【射击】与鲨鲨的意识进行相连，控制她穿越敌人领地。按【激活】即可让鲨鲨向前冲刺并爆炸，【束缚】小范围内的所有玩家。技能失效后，鲨鲨将变回一颗休眠的球体。与球体【互动】即可将其回收，在短暂的冷却时间后可再次获得无敌超鲨充能。鲨鲨仅可被回收一次。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/g盖可_Gekko/X_无敌超鲨_icon.png", "video": "特工技能/g盖可_Gekko/X_无敌超鲨_video.mp4", "twName": "鯊無赦"}], "assetFolder": "特工技能/g盖可_Gekko"}, {"id": 22, "name": "钢锁", "eName": "Deadlock", "slug": "deadlock", "role": "哨卫", "description": "来自北欧的特工“钢锁”配备着多种尖端纳米纤维武器，她擅长监听战场动态和阻碍对手移动。一旦敌人遭到锁定，将面对她凌厉无情的攻势并难逃一劫。", "portrait": "特工技能/d钢锁_Deadlock/portrait.png", "background": "特工技能/d钢锁_Deadlock/background.png", "twName": "蒂羅", "aliases": "钢锁 Deadlock 蒂羅 蒂羅 deadlock", "skills": [{"key": "C", "slotKey": "C", "name": "阻域屏障", "description": "装备屏障网生成器。按【射击】向前掷出。该装置会在落地点周围生成屏障网，阻挡所有角色移动。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/d钢锁_Deadlock/C_阻域屏障_icon.png", "video": "特工技能/d钢锁_Deadlock/C_阻域屏障_video.mp4", "twName": "重力網"}, {"key": "Q", "slotKey": "Q", "name": "声感陷阱", "description": "装备声感陷阱。按【射击】进行部署。声感陷阱将在一定范围内监听敌方动态，一旦探测到脚步声、枪声或其它明显噪音，便会自动激活，对区域内所有目标造成【震荡】。此装置可被回收并【重新部署】。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/d钢锁_Deadlock/Q_声感陷阱_icon.png", "video": "特工技能/d钢锁_Deadlock/Q_声感陷阱_video.mp4", "twName": "聲波感測器"}, {"key": "E", "slotKey": "E", "name": "重力捕网", "description": "装备重力捕网手雷。按【射击】投掷，按【辅助射击】可轻抛。手雷会在落地后引爆，迫使范围内的角色蹲下，并减慢其移动速度。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/d钢锁_Deadlock/E_重力捕网_icon.png", "video": "特工技能/d钢锁_Deadlock/E_重力捕网_video.mp4", "twName": "天羅地網"}, {"key": "X", "slotKey": "X", "name": "断魂索道", "description": "装备纳米纤维加速器。按【射击】发出一道纳米纤维脉冲波，把命中的首个敌人包裹在茧里，并拖拽目标沿一条索道移动。如果敌人在抵达终点前未获得解救，则直接被击败。纳米纤维茧可被摧毁。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/d钢锁_Deadlock/X_断魂索道_icon.png", "video": "特工技能/d钢锁_Deadlock/X_断魂索道_video.mp4", "twName": "在繭難逃"}], "assetFolder": "特工技能/d钢锁_Deadlock"}, {"id": 23, "name": "壹决", "eName": "Iso", "slug": "iso", "role": "决斗", "description": "“壹决”是华夏文明的后裔。他是枪斗的艺术家，战斗时仿佛沉浸在自我的心流中，将对手的抵抗悉数瓦解。他还能重构环境中的能量来阻挡子弹。战斗中的他时刻保持专注，并渴望与强敌一决高下。", "portrait": "特工技能/i壹决_Iso/portrait.png", "background": "特工技能/i壹决_Iso/background.png", "twName": "離索", "aliases": "壹决 Iso 離索 離索 iso", "skills": [{"key": "C", "slotKey": "C", "name": "绝对屏障", "description": "将能量聚合为棱晶形态。按【射击】向前推出一道可以阻挡子弹的能量墙。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/i壹决_Iso/C_绝对屏障_icon.png", "video": "特工技能/i壹决_Iso/C_绝对屏障_video.mp4", "twName": "應變"}, {"key": "Q", "slotKey": "Q", "name": "稳态剥离", "description": "装备扰乱分子结构的能量箭。按【射击】将其向前掷出，对触碰到的所有玩家施加短暂的【易伤】效果。此能量箭可穿透墙壁等固体障碍。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/i壹决_Iso/Q_稳态剥离_icon.png", "video": "特工技能/i壹决_Iso/Q_稳态剥离_video.mp4", "twName": "削減"}, {"key": "E", "slotKey": "E", "name": "战斗心流", "description": "集中意念:获得一道护盾，可吸收一次任意来源的伤害，并进入心流状态。在此状态期间，受到你伤害的敌人会在被击败时生成一颗能量球。射击此球体可刷新当前存在的护盾和心流状态，或生成一道新护盾。", "typeName": "招牌技能", "cost": "150第一个充能免费，其余150", "icon": "特工技能/i壹决_Iso/E_战斗心流_icon.png", "video": "特工技能/i壹决_Iso/E_战斗心流_video.mp4", "twName": "雙源"}, {"key": "X", "slotKey": "X", "name": "决斗通牒", "description": "构筑一座异次元竞技场。按【射击】发出一道穿越战场的能量矩阵，将命中的首名敌人拉进竞技场与你一对一决斗。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/i壹决_Iso/X_决斗通牒_icon.png", "video": "特工技能/i壹决_Iso/X_决斗通牒_video.mp4", "twName": "決滅"}], "assetFolder": "特工技能/i壹决_Iso"}, {"id": 24, "name": "暮蝶", "eName": "Clove", "slug": "clove", "role": "控场", "description": "来自不列颠群岛北部的\"暮蝶\"擅长用自己的招牌恶作剧来捉弄敌人。即便在被击败后，这位年轻的永生者也能继续干扰敌人，甚至出其不意地返场再战。", "portrait": "特工技能/c暮蝶_Clove/portrait.png", "background": "特工技能/c暮蝶_Clove/background.png", "twName": "珂樂芙", "aliases": "暮蝶 Clove 珂樂芙 珂樂芙 clove", "skills": [{"key": "C", "slotKey": "C", "name": "虹吸", "description": "激活后，从被暮蝶击败或助攻的敌人身上吸收生命能量，获得加速和临时生命值。", "typeName": "基础技能", "cost": "100", "icon": "特工技能/c暮蝶_Clove/C_虹吸_icon.png", "video": "特工技能/c暮蝶_Clove/C_虹吸_video.mp4", "twName": "精魂再生"}, {"key": "Q", "slotKey": "Q", "name": "整蛊", "description": "装备一块不朽精华碎片。按【射击】将其掷出，短暂延迟后碎片爆炸，对范围内所有目标施加短时间的【腐坏】效果。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/c暮蝶_Clove/Q_整蛊_icon.png", "video": "特工技能/c暮蝶_Clove/Q_整蛊_video.mp4", "twName": "驚奇干涉"}, {"key": "E", "slotKey": "E", "name": "霞染", "description": "装备战场地图。按【射击】选择烟雾的部署位置，按【辅助射击】以确认，在指定地点创造阻隔视线的云雾。暮蝶可以在被击败期间使用此技能。", "typeName": "招牌技能", "cost": "第一个充能免费，其余150", "icon": "特工技能/c暮蝶_Clove/E_霞染_icon.png", "video": "特工技能/c暮蝶_Clove/E_霞染_video.mp4", "twName": "瑰詭煙雲"}, {"key": "X", "slotKey": "X", "name": "化蝶", "description": "被击败后，【激活】此技能以复活。复活后，暮蝶必须在限定时间内完成击败或助攻，否则将会回到被击败状态。【再次激活】可提前取消技能。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/c暮蝶_Clove/X_化蝶_icon.png", "video": "特工技能/c暮蝶_Clove/X_化蝶_video.mp4", "twName": "續命開關"}], "assetFolder": "特工技能/c暮蝶_Clove"}, {"id": 25, "name": "维斯", "eName": "Vyse", "slug": "vyse", "role": "哨卫", "description": "“维斯”是一位高智商金属能力者。她能自由操纵液态金属的形态，为敌人设下重重陷阱和障碍，甚至解除他们的武装。敌人与她对抗，就像在与整个战场为敌。", "portrait": "特工技能/v维斯_Vyse/portrait.png", "background": "特工技能/v维斯_Vyse/background.png", "twName": "薇絲", "aliases": "维斯 Vyse 薇絲 薇絲 vyse", "skills": [{"key": "C", "slotKey": "C", "name": "剃刀藤蔓", "description": "装备网状的液态金属。按【射击】将其投射出去。该装置会在落地时隐形。激活后，它会从地面伸出大量剃刀藤蔓，对穿行的所有玩家造成伤害和减速。", "typeName": "基础技能", "cost": "150", "icon": "特工技能/v维斯_Vyse/C_剃刀藤蔓_icon.png", "video": "特工技能/v维斯_Vyse/C_剃刀藤蔓_video.mp4", "twName": "荊棘鐵網"}, {"key": "Q", "slotKey": "Q", "name": "裁断", "description": "装备条状液态金属。按【射击】放置一道隐藏的隔断陷阱。当有敌人经过时，会在其身后升起一道无法摧毁的屏障墙。墙体将在一段时间后自行瓦解。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/v维斯_Vyse/Q_裁断_icon.png", "video": "特工技能/v维斯_Vyse/Q_裁断_video.mp4", "twName": "斷路鐵牆"}, {"key": "E", "slotKey": "E", "name": "弧光玫瑰", "description": "装备弧光玫瑰。选择一块墙面，放置隐形的弧光玫瑰，按【辅助射击】可部署到墙的另一侧。【再次按技能键】可致盲所有目击闪爆点的玩家。此技能可回收和【重新布署】。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/v维斯_Vyse/E_弧光玫瑰_icon.png", "video": "特工技能/v维斯_Vyse/E_弧光玫瑰_video.mp4", "twName": "弧光薔薇"}, {"key": "X", "slotKey": "X", "name": "铁棘禁园", "description": "装备液态金属荆团。按【射击】在短暂的蓄力后，向四周展开荆棘领域，阻塞敌人的主要武器。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/v维斯_Vyse/X_铁棘禁园_icon.png", "video": "特工技能/v维斯_Vyse/X_铁棘禁园_video.mp4", "twName": "叢棘盛開"}], "assetFolder": "特工技能/v维斯_Vyse"}, {"id": 26, "name": "钛狐", "eName": "Tejo", "slug": "tejo", "role": "先锋", "description": "“钛狐”是来自南美洲的资深情报顾问。他的弹道制导系统可以向敌人施压，迫使其做出选择——要么放弃阵地，要么放弃生命。受到精准打击后，对手往往会失去平衡，被他轻易击败。", "portrait": "特工技能/t钛狐_Tejo/portrait.jpg", "background": "特工技能/t钛狐_Tejo/background.png", "twName": "戴侯", "aliases": "钛狐 Tejo 戴侯 戴侯 tejo", "skills": [{"key": "C", "slotKey": "C", "name": "潜袭爬虫", "description": "装备一架潜袭爬虫，按【射击】将爬虫抛向前方，直接控制其移动。再次按【射击】可触发脉冲，压制并揭露被击中的敌人。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/t钛狐_Tejo/C_潜袭爬虫_icon.png", "video": "特工技能/t钛狐_Tejo/C_潜袭爬虫_video.mp4", "twName": "導引轟炸"}, {"key": "Q", "slotKey": "Q", "name": "特快专递", "description": "装备一颗粘性榴弹，按【射击】发射。榴弹会粘附击中的首个表面并爆炸，被爆炸波及的所有目标都会受到震荡。按【辅助射击】发射榴弹时，榴弹会在反弹一次后爆炸。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/t钛狐_Tejo/Q_特快专递_icon.png", "video": "特工技能/t钛狐_Tejo/Q_特快专递_video.mp4", "twName": "匿蹤無人機"}, {"key": "E", "slotKey": "E", "name": "精准投放", "description": "装备一套战术投送系统。按【射击】在地图上选择最多两个目标位置。按【辅助射击】发射导弹。导弹可自动导航至目标位置，然后引爆。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/t钛狐_Tejo/E_精准投放_icon.png", "video": "特工技能/t钛狐_Tejo/E_精准投放_video.mp4", "twName": "限時快遞"}, {"key": "X", "slotKey": "X", "name": "末日审判", "description": "装备战术打击地图。按【射击】选择打击起点，【再次按射击键】设置终点并发动无人机空袭，沿所选路径进行地毯式爆破。在地图瞄准期间按【辅助射击】可取消起点设置。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/t钛狐_Tejo/X_末日审判_icon.png", "video": "特工技能/t钛狐_Tejo/X_末日审判_video.mp4", "twName": "末日審判"}], "assetFolder": "特工技能/t钛狐_Tejo"}, {"id": 27, "name": "幻棱", "eName": "Waylay", "slug": "waylay", "role": "决斗", "description": "来自暹罗湾北岸的“幻棱”是一名拥有棱晶能力的源能者，可以将自己变幻成光，在战场上穿梭自如，通过棱光碎片将敌人击倒后迅速撤退到安全区。眨眼之间，胜负已分。", "portrait": "特工技能/w幻棱_Waylay/portrait.png", "background": "特工技能/w幻棱_Waylay/background.png", "twName": "維蕾", "aliases": "幻棱 Waylay 維蕾 維蕾 waylay", "skills": [{"key": "C", "slotKey": "C", "name": "光棱闪爆", "description": "装备一道光簇，按【射击】立即投出与地面接触时爆炸，【干扰】附近的玩家，使其受到大幅的移动和武器减速。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/w幻棱_Waylay/C_光棱闪爆_icon.png", "video": "特工技能/w幻棱_Waylay/C_光棱闪爆_video.mp4", "twName": "折射"}, {"key": "Q", "slotKey": "Q", "name": "光速飞跃", "description": "准备进行加速。 按【射击】向前冲刺两次。按【辅助射击】向前冲刺一次。只有第一次冲刺能让你升空。", "typeName": "基础技能", "cost": "300", "icon": "特工技能/w幻棱_Waylay/Q_光速飞跃_icon.png", "video": "特工技能/w幻棱_Waylay/Q_光速飞跃_video.mp4", "twName": "浸染"}, {"key": "E", "slotKey": "E", "name": "溯流回光", "description": "立即在地面上形成一道光束。【再次激活】技能即可让自己化为一颗纯粹的光粒，迅速回到光束的所在位置。穿行时，你将进入【无敌】状态。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/w幻棱_Waylay/E_溯流回光_icon.png", "video": "特工技能/w幻棱_Waylay/E_溯流回光_video.mp4", "twName": "光速"}, {"key": "X", "slotKey": "X", "name": "时光修罗场", "description": "装备并汇聚光棱能量。按【射击】创造一个自己的残像，放射一道光线。短暂延迟后你将获得大幅加速效果，同时光线开始扩张，干扰区域内的其他玩家。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/w幻棱_Waylay/X_时光修罗场_icon.png", "video": "特工技能/w幻棱_Waylay/X_时光修罗场_video.mp4", "twName": "聚合之道"}], "assetFolder": "特工技能/w幻棱_Waylay"}, {"id": 28, "name": "禁灭", "eName": "Veto", "slug": "veto", "role": "哨卫", "description": "来自西非的“禁灭”是一名压制型英雄，因基因突变获得了超凡力量。禁灭打破了既有的战斗规则，无论敌人使出怎样的手段和科技，在他面前都形同虚设。禁灭出现在战场上时，只有枪法才是你唯一的保障。", "portrait": "特工技能/v禁灭_Veto/portrait.png", "background": "特工技能/v禁灭_Veto/background.png", "twName": "維托", "aliases": "禁灭 Veto 維托 維托 veto", "skills": [{"key": "C", "slotKey": "C", "name": "涡流折跃", "description": "装备一颗漩涡能量球。按【射击】将其放置于地面。在技能范围内且瞄准漩涡时，【再次激活】技能即可传送至漩涡所在位置。在购买阶段期间，可将能量球回收并【重新部署】。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/v禁灭_Veto/C_涡流折跃_icon.png", "video": "特工技能/v禁灭_Veto/C_涡流折跃_video.mp4", "twName": "攔截器"}, {"key": "Q", "slotKey": "Q", "name": "裂变残片", "description": "装备一块由异变产生的黏液碎片。按【射击】将其掷出。碎片会在发生碰撞时部署为陷阱，困住经过的敌人。被困敌人将受到【致聋】和【腐坏】效果。陷阱激活前可被敌人摧毁。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/v禁灭_Veto/Q_裂变残片_icon.png", "video": "特工技能/v禁灭_Veto/Q_裂变残片_video.mp4", "twName": "鎖喉"}, {"key": "E", "slotKey": "E", "name": "噬源体", "description": "装备噬源体。按【射击】将其部署至目标位置。部署后，【再次使用】技能即可激活。激活后，噬源体将摧毁一切能从玩家身上弹开或被枪火自然摧毁的装置。 噬源体可被敌人摧毁。", "typeName": "招牌技能", "cost": "免费", "icon": "特工技能/v禁灭_Veto/E_噬源体_icon.png", "video": "特工技能/v禁灭_Veto/E_噬源体_video.mp4", "twName": "穿越之徑"}, {"key": "X", "slotKey": "X", "name": "完全进化", "description": "立即进入完全变异形态，获得【作战强化】效果和再生能力，并免疫所有形式的减益效果。", "typeName": "终极技能", "cost": "7点大招点数", "icon": "特工技能/v禁灭_Veto/X_完全进化_icon.png", "video": "特工技能/v禁灭_Veto/X_完全进化_video.mp4", "twName": "終極突變"}], "assetFolder": "特工技能/v禁灭_Veto"}, {"id": 29, "name": "迷核", "eName": "Miks", "slug": "miks", "role": "控场", "description": "来自欧洲中南部的迷核能够操控纯粹的声波能量。凭借极具感染力的激情和独特的音波力量，他率领全队协同作战，定下战场的主导节奏。", "portrait": "特工技能/m迷核_Miks/portrait.png", "background": "特工技能/m迷核_Miks/background.png", "twName": "Miks", "aliases": "迷核 Miks 米克什 Miks miks", "skills": [{"key": "C", "slotKey": "C", "name": "电音脉冲", "description": "装备电音脉冲。按【辅助射击】可在震荡输出与治疗输出之间切换。按【射击】投掷装置。落地时，电音脉冲会释放声波，对玩家造成震荡或治疗效果。", "typeName": "基础技能", "cost": "250", "icon": "特工技能/m迷核_Miks/C_电音脉冲_icon.png", "video": "特工技能/m迷核_Miks/C_电音脉冲_video.mp4", "twName": "M脈衝"}, {"key": "Q", "slotKey": "Q", "name": "共振谐律", "description": "装备共振谐律。锁定一名队友并按下【射击】，为你和该队友激活【作战强化】效果和速度加成，每次击败都会刷新效果按【辅助射击】让自己获得【作战强化】效果和速度加成。", "typeName": "基础技能", "cost": "200", "icon": "特工技能/m迷核_Miks/Q_共振谐律_icon.png", "video": "特工技能/m迷核_Miks/Q_共振谐律_video.mp4", "twName": "調和"}, {"key": "E", "slotKey": "E", "name": "声波帷幕", "description": "装备地图定位仪。按【射击】设定位置。按【辅助射击】在选定位置释放烟雾。", "typeName": "招牌技能", "cost": "第一个充能免费，其余100", "icon": "特工技能/m迷核_Miks/E_声波帷幕_icon.png", "video": "特工技能/m迷核_Miks/E_声波帷幕_video.mp4", "twName": "波形屏障"}, {"key": "X", "slotKey": "X", "name": "音脉强袭", "description": "装备音脉强袭。按【射击】积蓄能量并向前释放音波源光，击退目标，并对其造成【致聋】和【减速】。", "typeName": "终极技能", "cost": "8点大招点数", "icon": "特工技能/m迷核_Miks/X_音脉强袭_icon.png", "video": "特工技能/m迷核_Miks/X_音脉强袭_video.mp4", "twName": "低音震盪"}], "assetFolder": "特工技能/m迷核_Miks"}];
+const ROLE_COLORS = {"决斗": "#ff6a5b", "先锋": "#5fd0ff", "控场": "#a873ff", "哨卫": "#7edc8d"};
+let currentRole = 'all';
+let currentSlug = null;
+let currentView = 'agents';
+
+function colorForRole(role) {
+  return ROLE_COLORS[role] || '#93a0ad';
+}
+
+function pill(text, color) {
+  return '<span class="pill" style="color:' + color + '">' + text + '</span>';
+}
+
+function initTags() {
+  const roles = [];
+  const seen = new Set();
+  AGENTS.forEach(agent => {
+    if (!seen.has(agent.role)) {
+      seen.add(agent.role);
+      roles.push(agent.role);
+    }
+  });
+  const tags = document.getElementById('tags');
+  let html = '<button class="tag' + (currentRole === 'all' ? ' on' : '') + '" onclick="setRole(\'all\')">全部</button>';
+  roles.forEach(role => {
+    html += '<button class="tag' + (currentRole === role ? ' on' : '') + '" onclick="setRole(\'' + role + '\')">' + role + '</button>';
+  });
+  tags.innerHTML = html;
+}
+
+function setRole(role) {
+  currentRole = role;
+  initTags();
+  renderList();
+}
+
+function filteredAgents() {
+  const query = document.getElementById('search').value.trim().toLowerCase();
+  return AGENTS.filter(agent => {
+    if (currentRole !== 'all' && agent.role !== currentRole) {
+      return false;
+    }
+    if (!query) {
+      return true;
+    }
+    return (agent.aliases || '').toLowerCase().includes(query);
+  });
+}
+
+function renderList() {
+  const list = filteredAgents();
+  document.getElementById('count').textContent = list.length + ' / ' + AGENTS.length + ' 名特工';
+  document.getElementById('list').innerHTML = list.map(agent => {
+    const checked = agent.slug === currentSlug ? ' checked' : '';
+    return '<div class="agent' + checked + '" onclick="openAgent(\'' + agent.slug + '\')">'
+      + '<img src="' + agent.portrait + '" alt="' + agent.name + '" loading="lazy">'
+      + '<div class="i">'
+      + '<div class="n">' + agent.name + '</div>'
+      + '<div class="s">' + agent.eName + ' · 台服名 ' + agent.twName + '</div>'
+      + '<div class="meta">' + pill(agent.role, colorForRole(agent.role)) + '</div>'
+      + '</div></div>';
+  }).join('');
+}
+
+function setView(view) {
+  currentView = view === 'maps' ? 'maps' : 'agents';
+  const isAgents = currentView === 'agents';
+  if (location.hash !== (isAgents ? '#agents' : '#maps')) {
+    location.hash = isAgents ? 'agents' : 'maps';
+  }
+  document.getElementById('agentsTab').classList.toggle('on', isAgents);
+  document.getElementById('mapsTab').classList.toggle('on', !isAgents);
+  document.getElementById('search').parentElement.style.display = isAgents ? 'block' : 'none';
+  document.getElementById('tags').style.display = isAgents ? 'flex' : 'none';
+  document.getElementById('count').style.display = isAgents ? 'block' : 'none';
+  document.getElementById('list').style.display = isAgents ? 'grid' : 'none';
+  document.getElementById('mapsSidebarPanel').classList.toggle('hidden', isAgents);
+  document.getElementById('mapsShell').style.display = isAgents ? 'none' : 'block';
+  document.getElementById('noSel').style.display = isAgents && !currentSlug ? 'flex' : 'none';
+  document.getElementById('detail').style.display = isAgents && currentSlug ? 'block' : 'none';
+}
+
+function openAgent(slug) {
+  setView('agents');
+  currentSlug = slug;
+  const agent = AGENTS.find(item => item.slug === slug);
+  if (!agent) {
+    return;
+  }
+
+  document.getElementById('noSel').style.display = 'none';
+  const detail = document.getElementById('detail');
+  detail.style.display = 'block';
+
+  let html = '<section class="hero-top" style="background-image:url(\'' + agent.background + '\')">'
+    + '<div class="hero-head">'
+    + '<img src="' + agent.portrait + '" alt="' + agent.name + '">'
+    + '<div class="hero-info">'
+    + '<h2>' + agent.name + '</h2>'
+    + '<div class="en">' + agent.eName.toUpperCase() + '</div>'
+    + '<div class="role-row">' + pill(agent.role, colorForRole(agent.role)) + '</div>'
+    + '<div class="desc">' + agent.description + '</div>'
+    + '<div class="src">台服对应特工名：' + agent.twName + ' · 本地资源目录：' + agent.assetFolder + '</div>'
+    + '</div></div></section>';
+
+  html += '<div class="skill-tabs">';
+  agent.skills.forEach((skill, index) => {
+    html += '<button class="' + (index === 0 ? 'on' : '') + '" onclick="switchSkill(this, \'' + skill.key + '\')">'
+      + '<img src="' + skill.icon + '" alt="' + skill.name + '">'
+      + '<span><span class="key">' + skill.slotKey + '</span><span class="slot">' + (skill.typeName || '技能') + '</span></span>'
+      + '</button>';
+  });
+  html += '</div>';
+
+  agent.skills.forEach((skill, index) => {
+    const metaParts = [skill.slotKey];
+    if (skill.typeName) metaParts.push(skill.typeName);
+    if (skill.cost) metaParts.push('费用：' + skill.cost);
+
+    html += '<section class="skill-panel' + (index === 0 ? ' on' : '') + '" data-skill="' + skill.key + '">'
+      + '<div class="skill-head">'
+      + '<img src="' + skill.icon + '" alt="' + skill.name + '">'
+      + '<div class="skill-copy">'
+      + '<h3>' + skill.name + '</h3>'
+      + '<div class="meta">' + metaParts.join(' · ') + '</div>'
+      + '<div class="desc">' + skill.description + '</div>'
+      + (skill.twName && skill.twName !== skill.name ? '<div class="tw-note">台服技能名：' + skill.twName + '</div>' : '')
+      + '</div></div>'
+      + (skill.video
+        ? '<div class="video-wrap"><video controls preload="metadata" playsinline><source src="' + skill.video + '" type="video/mp4"></video><div class="video-meta">本地演示视频：' + skill.video + '</div></div>'
+        : '<div class="video-empty">当前技能没有匹配到官方演示视频，已保留本地图标和文案。</div>')
+      + '</section>';
+  });
+
+  detail.innerHTML = html;
+  document.querySelector('.main').scrollTop = 0;
+  renderList();
+}
+
+function switchSkill(button, key) {
+  button.parentElement.querySelectorAll('button').forEach(item => item.className = '');
+  button.className = 'on';
+
+  const panels = document.querySelectorAll('.skill-panel');
+  panels.forEach(panel => panel.className = 'skill-panel');
+  const active = document.querySelector('.skill-panel[data-skill="' + key + '"]');
+  if (!active) {
+    return;
+  }
+  active.className = 'skill-panel on';
+
+  const activeVideo = active.querySelector('video');
+  document.querySelectorAll('video').forEach(video => {
+    if (video !== activeVideo) video.pause();
+  });
+}
+
+let currentMapSlug = null;
+let currentMapMarker = null;
+
+function escapeHtml(text) {
+  return String(text || '').replace(/[&<>"]/g, function(char) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char];
+  });
+}
+
+function getMapsData() {
+  if (window.MAPS_DATA && window.MAPS_DATA.length) {
+    return window.MAPS_DATA;
+  }
+  if (typeof MAPS_DATA !== 'undefined' && MAPS_DATA.length) {
+    return MAPS_DATA;
+  }
+  return [];
+}
+
+function filteredMaps() {
+  const query = document.getElementById('mapSearch') ? document.getElementById('mapSearch').value.trim().toLowerCase() : '';
+  return getMapsData().filter(map => {
+    if (!query) {
+      return true;
+    }
+    return (map.aliases || '').toLowerCase().includes(query);
+  });
+}
+
+function openMap(slug) {
+  setView('maps');
+  currentMapSlug = slug;
+  currentMapMarker = null;
+  const map = getMapsData().find(item => item.slug === slug);
+  if (!map) return;
+
+  const detail = document.getElementById('mapDetail');
+  const meta = [
+    map.category,
+    map.patch ? '上线 ' + map.patch : '',
+    map.tacticalDescription || '',
+    map.location || ''
+  ].filter(Boolean);
+
+  const callouts = (map.markers && map.markers.length)
+    ? map.markers.map(marker =>
+        '<button class="map-callout" data-map-label="' + escapeHtml(marker.label) + '" onclick="focusMapMarker(\'' + map.slug + '\', \'' + encodeURIComponent(marker.label) + '\')">'
+        + '<strong>' + escapeHtml(marker.regionName || marker.label) + '</strong>'
+        + '<span class="region">' + escapeHtml(marker.superRegion || '点位') + '</span>'
+        + '</button>'
+      ).join('')
+    : '<div class="map-empty">当前地图没有可用的离线点位数据。</div>';
+
+  detail.innerHTML = '<section class="map-hero" style="background-image:url(\'' + map.splash + '\')">'
+    + '<div class="map-hero-copy">'
+    + '<h3>' + escapeHtml(map.name) + '</h3>'
+    + '<div class="en">' + escapeHtml(map.eName) + '</div>'
+    + '<div class="map-meta-row">' + meta.map(item => '<span class="map-meta-pill">' + escapeHtml(item) + '</span>').join('') + '</div>'
+    + '<div class="map-meta" style="margin-top:14px;">坐标：' + escapeHtml(map.coordinatesLabel || map.coordinates || '') + '</div>'
+    + '</div></section>'
+    + '<div class="map-layout">'
+    + '<section class="map-stage-card">'
+    + '<div class="map-stage-head">'
+    + '<h4>离线小地图</h4>'
+    + '<div class="map-toolbar"><button type="button" onclick="resetMapView(\'' + map.slug + '\')">重置视图</button><span class="map-list-note">滚轮缩放，按住拖拽</span></div>'
+    + '</div>'
+    + '<div class="map-stage" id="map-stage-' + map.slug + '">'
+    + '<div class="map-canvas" id="map-canvas-' + map.slug + '">'
+    + '<img src="' + map.minimap + '" alt="' + escapeHtml(map.name) + ' minimap">'
+    + (map.markers || []).map(marker =>
+        '<button class="map-marker" type="button" title="' + escapeHtml(marker.label) + '" data-map-marker="' + escapeHtml(marker.label) + '" onclick="focusMapMarker(\'' + map.slug + '\', \'' + encodeURIComponent(marker.label) + '\')" style="left:' + (marker.x * 100).toFixed(3) + '%;top:' + (marker.y * 100).toFixed(3) + '%;"></button>'
+      ).join('')
+    + '</div></div></section>'
+    + '<aside class="map-list-card">'
+    + '<div class="map-list-head"><h4>点位列表</h4><span class="map-list-note">' + ((map.markers || []).length) + ' 个标记</span></div>'
+    + '<div class="map-callouts">' + callouts + '</div>'
+    + '</aside></div>';
+
+  detail.className = 'map-detail on';
+  renderMaps();
+  mountMapViewer(map.slug);
+}
+
+function renderMaps() {
+  const maps = filteredMaps();
+  document.getElementById('mapCount').textContent = maps.length + ' / ' + getMapsData().length + ' maps';
+  document.getElementById('mapSidebarList').innerHTML = maps.map(map => {
+    const checked = map.slug === currentMapSlug ? ' on' : '';
+    return '<button class="map-side-item' + checked + '" type="button" onclick="openMap(\'' + map.slug + '\')">'
+      + '<img src="' + map.splash + '" alt="' + escapeHtml(map.name) + '" loading="lazy">'
+      + '<span><span class="n">' + escapeHtml(map.name) + '</span><span class="s">' + escapeHtml(map.eName) + '</span></span>'
+      + '</button>';
+  }).join('');
+}
+
+function ensureMapState(slug) {
+  const stage = document.getElementById('map-stage-' + slug);
+  if (!stage) return null;
+  if (!stage._mapState) {
+    stage._mapState = { scale: 1, x: 0, y: 0 };
+  }
+  return stage._mapState;
+}
+
+function applyMapTransform(slug) {
+  const canvas = document.getElementById('map-canvas-' + slug);
+  const state = ensureMapState(slug);
+  if (!canvas || !state) return;
+  canvas.style.transform = 'translate(' + state.x + 'px,' + state.y + 'px) scale(' + state.scale + ')';
+}
+
+function resetMapView(slug) {
+  const state = ensureMapState(slug);
+  if (!state) return;
+  state.scale = 1;
+  state.x = 0;
+  state.y = 0;
+  applyMapTransform(slug);
+}
+
+function focusMapMarker(slug, encodedLabel) {
+  const label = decodeURIComponent(encodedLabel);
+  currentMapMarker = label;
+  const map = getMapsData().find(item => item.slug === slug);
+  const marker = map && (map.markers || []).find(item => item.label === label);
+  const stage = document.getElementById('map-stage-' + slug);
+  const state = ensureMapState(slug);
+  if (marker && stage && state) {
+    const width = stage.clientWidth;
+    const height = stage.clientHeight;
+    state.scale = Math.max(state.scale, 1.9);
+    state.x = width / 2 - marker.x * width * state.scale;
+    state.y = height / 2 - marker.y * height * state.scale;
+    applyMapTransform(slug);
+  }
+
+  document.querySelectorAll('[data-map-marker]').forEach(node => {
+    node.classList.toggle('on', node.getAttribute('data-map-marker') === label);
+  });
+  document.querySelectorAll('[data-map-label]').forEach(node => {
+    node.classList.toggle('on', node.getAttribute('data-map-label') === label);
+  });
+}
+
+function mountMapViewer(slug) {
+  const stage = document.getElementById('map-stage-' + slug);
+  if (!stage || stage.dataset.bound === '1') return;
+  stage.dataset.bound = '1';
+  const state = ensureMapState(slug);
+  let dragging = false;
+  let startX = 0;
+  let startY = 0;
+  let originX = 0;
+  let originY = 0;
+
+  stage.addEventListener('wheel', function(event) {
+    event.preventDefault();
+    const rect = stage.getBoundingClientRect();
+    const pointerX = event.clientX - rect.left;
+    const pointerY = event.clientY - rect.top;
+    const nextScale = Math.max(1, Math.min(4, state.scale + (event.deltaY < 0 ? 0.18 : -0.18)));
+    const ratio = nextScale / state.scale;
+    state.x = pointerX - (pointerX - state.x) * ratio;
+    state.y = pointerY - (pointerY - state.y) * ratio;
+    state.scale = nextScale;
+    applyMapTransform(slug);
+  }, { passive: false });
+
+  stage.addEventListener('pointerdown', function(event) {
+    dragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+    originX = state.x;
+    originY = state.y;
+    stage.setPointerCapture(event.pointerId);
+  });
+
+  stage.addEventListener('pointermove', function(event) {
+    if (!dragging) return;
+    state.x = originX + (event.clientX - startX);
+    state.y = originY + (event.clientY - startY);
+    applyMapTransform(slug);
+  });
+
+  function stopDrag(event) {
+    if (!dragging) return;
+    dragging = false;
+    if (event && stage.hasPointerCapture(event.pointerId)) {
+      stage.releasePointerCapture(event.pointerId);
+    }
+  }
+
+  stage.addEventListener('pointerup', stopDrag);
+  stage.addEventListener('pointercancel', stopDrag);
+  stage.addEventListener('dblclick', function() {
+    resetMapView(slug);
+  });
+
+  applyMapTransform(slug);
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && currentView === 'agents' && currentSlug) {
+    currentSlug = null;
+    document.getElementById('detail').style.display = 'none';
+    document.getElementById('detail').innerHTML = '';
+    document.getElementById('noSel').style.display = 'flex';
+    document.querySelectorAll('video').forEach(video => video.pause());
+    renderList();
+    return;
+  }
+
+  if (!currentSlug) {
+    return;
+  }
+
+  const key = event.key.toUpperCase();
+  const target = Array.from(document.querySelectorAll('.skill-tabs .key')).find(node => node.textContent === key);
+  if (target) {
+    target.parentElement.parentElement.click();
+  }
+});
+
+initTags();
+renderList();
+renderMaps();
+if (getMapsData().length) {
+  openMap(getMapsData()[0].slug);
+}
+setView(location.hash === '#maps' ? 'maps' : 'agents');
+
+/* === GSAP Animations === */
+(function() {
+  if (typeof gsap === 'undefined') return;
+
+  function playEntrance() {
+    var tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    tl.from(".sidebar h1", { opacity: 0, y: -16, duration: 0.5 })
+      .from(".intro", { opacity: 0, y: 12, duration: 0.4 }, "-=0.2")
+      .from(".sbar", { opacity: 0, y: 12, duration: 0.35 }, "-=0.15")
+      .from(".tags .tag", { opacity: 0, scale: 0.9, duration: 0.3, stagger: 0.04 }, "-=0.1")
+      .from(".view-tabs", { opacity: 0, y: 10, duration: 0.35 }, "-=0.1")
+      .from(".no-sel", { opacity: 0, duration: 0.4 }, "-=0.2");
+  }
+
+  function animateList() {
+    gsap.from("#list .agent", {
+      opacity: 0, y: 14, duration: 0.35, stagger: 0.03,
+      ease: "power2.out", clearProps: "opacity,transform"
+    });
+  }
+
+  function animateDetail() {
+    var tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    tl.from(".hero-top", { opacity: 0, y: 24, duration: 0.45 })
+      .from(".hero-top img", { opacity: 0, x: -20, duration: 0.4 }, "-=0.25")
+      .from(".hero-info h2", { opacity: 0, y: 16, duration: 0.35 }, "-=0.2")
+      .from(".skill-tabs button", { opacity: 0, scale: 0.9, duration: 0.3, stagger: 0.04 }, "-=0.15")
+      .from(".skill-panel.on", { opacity: 0, y: 16, duration: 0.4 }, "-=0.15");
+  }
+
+  window._gsapSwitchSkill = function(panel) {
+    if (!panel) return;
+    gsap.fromTo(panel,
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
+    );
+  };
+
+  function animateMapDetail() {
+    var tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    tl.from(".map-hero", { opacity: 0, y: 20, duration: 0.45 })
+      .from(".map-stage-card", { opacity: 0, y: 16, duration: 0.4 }, "-=0.2")
+      .from(".map-list-card", { opacity: 0, y: 16, duration: 0.4 }, "-=0.3");
+  }
+
+  window._gsapViewSwitch = function(view) {
+    if (view === 'agents') {
+      gsap.from(".no-sel, #detail", { opacity: 0, x: 16, duration: 0.35, ease: "power2.out" });
+    } else {
+      gsap.from(".maps-shell", { opacity: 0, x: 16, duration: 0.35, ease: "power2.out" });
+    }
+  };
+
+  // Hook into existing functions
+  var origRenderList = window.renderList;
+  if (origRenderList) {
+    window.renderList = function() { origRenderList(); animateList(); };
+  }
+
+  var origRenderMaps = window.renderMaps;
+  if (origRenderMaps) {
+    window.renderMaps = function() { origRenderMaps(); animateMapCards(); };
+  }
+
+  var origOpenAgent = window.openAgent;
+  if (origOpenAgent) {
+    window.openAgent = function(slug) {
+      origOpenAgent(slug);
+      requestAnimationFrame(animateDetail);
+    };
+  }
+
+  var origOpenMap = window.openMap;
+  if (origOpenMap) {
+    window.openMap = function(slug) {
+      origOpenMap(slug);
+      requestAnimationFrame(animateMapDetail);
+    };
+  }
+
+  var origSetView = window.setView;
+  if (origSetView) {
+    window.setView = function(view) {
+      origSetView(view);
+      requestAnimationFrame(function() { window._gsapViewSwitch(view); });
+    };
+  }
+
+  // Run entrance
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { requestAnimationFrame(playEntrance); });
+  } else {
+    requestAnimationFrame(playEntrance);
+  }
+})();
+
+</script>
+</body>
+</html>

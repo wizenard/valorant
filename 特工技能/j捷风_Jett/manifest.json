@@ -1,0 +1,57 @@
+{
+  "id": 2,
+  "name": "捷风",
+  "eName": "Jett",
+  "twName": "婕提",
+  "role": "决斗",
+  "description": "“捷风”是新罗人的后代，她灵活机动的战斗风格使她能够采取比常人更激进和冒险的策略。她可以在战场上肆意纵横，将敌人逐个击破，或是把他们打个措手不及。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "SPACE",
+      "slotKey": "P",
+      "name": "飘移",
+      "typeName": "被动技能",
+      "cost": "/",
+      "icon": "P_飘移_icon.png",
+      "video": ""
+    },
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "瞬云",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_瞬云_icon.png",
+      "video": "C_瞬云_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "凌空",
+      "typeName": "基础技能",
+      "cost": "150",
+      "icon": "Q_凌空_icon.png",
+      "video": "Q_凌空_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "逐风",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_逐风_icon.png",
+      "video": "E_逐风_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "飓刃",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_飓刃_icon.png",
+      "video": "X_飓刃_video.mp4"
+    }
+  ]
+}

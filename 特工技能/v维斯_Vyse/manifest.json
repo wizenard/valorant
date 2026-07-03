@@ -1,0 +1,48 @@
+{
+  "id": 25,
+  "name": "维斯",
+  "eName": "Vyse",
+  "twName": "薇絲",
+  "role": "哨卫",
+  "description": "“维斯”是一位高智商金属能力者。她能自由操纵液态金属的形态，为敌人设下重重陷阱和障碍，甚至解除他们的武装。敌人与她对抗，就像在与整个战场为敌。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "剃刀藤蔓",
+      "typeName": "基础技能",
+      "cost": "150",
+      "icon": "C_剃刀藤蔓_icon.png",
+      "video": "C_剃刀藤蔓_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "裁断",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_裁断_icon.png",
+      "video": "Q_裁断_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "弧光玫瑰",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_弧光玫瑰_icon.png",
+      "video": "E_弧光玫瑰_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "铁棘禁园",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_铁棘禁园_icon.png",
+      "video": "X_铁棘禁园_video.mp4"
+    }
+  ]
+}

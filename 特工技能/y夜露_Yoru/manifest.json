@@ -1,0 +1,48 @@
+{
+  "id": 14,
+  "name": "夜露",
+  "eName": "Yoru",
+  "twName": "夜戮",
+  "role": "决斗",
+  "description": "来自东亚的“夜露”能够直接撕裂现实空间，无声无息地渗透敌人的防线。他在战斗中喜欢虚实结合，在敌人尚未猜到他的位置时发动突然袭击。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "出其不意",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_出其不意_icon.png",
+      "video": "C_出其不意_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "攻其不备",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "Q_攻其不备_icon.png",
+      "video": "Q_攻其不备_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "不请自来",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_不请自来_icon.png",
+      "video": "E_不请自来_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "神鬼不觉",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_神鬼不觉_icon.png",
+      "video": "X_神鬼不觉_video.mp4"
+    }
+  ]
+}

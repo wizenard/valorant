@@ -1,0 +1,48 @@
+{
+  "id": 3,
+  "name": "雷兹",
+  "eName": "Raze",
+  "twName": "芮茲",
+  "role": "决斗",
+  "description": "“雷兹”轰轰烈烈地离开了亚马逊平原。她的性情就跟其武器一样火爆，她的作战风格简单粗暴、爆发力十足。无论是攻坚战还是狭小空间的遭遇战，都是她的拿手好戏。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "花车巡游",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "C_花车巡游_icon.png",
+      "video": "C_花车巡游_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "惊喜翻腾",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_惊喜翻腾_icon.png",
+      "video": "Q_惊喜翻腾_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "彩雷飞溅",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_彩雷飞溅_icon.png",
+      "video": "E_彩雷飞溅_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "晚安焰火",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_晚安焰火_icon.png",
+      "video": "X_晚安焰火_video.mp4"
+    }
+  ]
+}

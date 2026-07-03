@@ -1,0 +1,5 @@
+# Video files (too large for GitHub)
+*.mp4
+
+# Backup files
+*_backup.html

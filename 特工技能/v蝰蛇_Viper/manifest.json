@@ -1,0 +1,48 @@
+{
+  "id": 9,
+  "name": "蝰蛇",
+  "eName": "Viper",
+  "twName": "薇蝮",
+  "role": "控场",
+  "description": "“蝰蛇”是一位来自美洲大陆的化学家，擅长部署毒性化学装置来控制战场并削弱敌人的视野。即便猎物没倒在她的毒素之下，她也会利用心理战将其击溃。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "蛇吻",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_蛇吻_icon.png",
+      "video": "C_蛇吻_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "瘴云",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_瘴云_icon.png",
+      "video": "Q_瘴云_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "毒幕",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_毒幕_icon.png",
+      "video": "E_毒幕_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "蝰腹",
+      "typeName": "终极技能",
+      "cost": "9点大招点数",
+      "icon": "X_蝰腹_icon.png",
+      "video": "X_蝰腹_video.mp4"
+    }
+  ]
+}

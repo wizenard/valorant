@@ -1,0 +1,48 @@
+{
+  "id": 7,
+  "name": "贤者",
+  "eName": "Sage",
+  "twName": "聖祈",
+  "role": "哨卫",
+  "description": "“贤者”是华夏文明的后代，她可以用超能力阻滞敌方攻势、为队友提供保护和治疗，甚至还能复活队友。有她在的地方，就如同是腥风血雨中的一处避风港。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "玉城",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "C_玉城_icon.png",
+      "video": "C_玉城_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "薄冰",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_薄冰_icon.png",
+      "video": "Q_薄冰_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "逢春",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_逢春_icon.png",
+      "video": "E_逢春_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "再起",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_再起_icon.png",
+      "video": "X_再起_video.mp4"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": 26,
+  "name": "钛狐",
+  "eName": "Tejo",
+  "twName": "戴侯",
+  "role": "先锋",
+  "description": "“钛狐”是来自南美洲的资深情报顾问。他的弹道制导系统可以向敌人施压，迫使其做出选择——要么放弃阵地，要么放弃生命。受到精准打击后，对手往往会失去平衡，被他轻易击败。",
+  "portrait": "portrait.jpg",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "潜袭爬虫",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "C_潜袭爬虫_icon.png",
+      "video": "C_潜袭爬虫_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "特快专递",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "Q_特快专递_icon.png",
+      "video": "Q_特快专递_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "精准投放",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_精准投放_icon.png",
+      "video": "E_精准投放_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "末日审判",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_末日审判_icon.png",
+      "video": "X_末日审判_video.mp4"
+    }
+  ]
+}

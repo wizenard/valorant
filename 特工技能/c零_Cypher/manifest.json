@@ -1,0 +1,48 @@
+{
+  "id": 10,
+  "name": "零",
+  "eName": "Cypher",
+  "twName": "瑟符",
+  "role": "哨卫",
+  "description": "情报贩子“零”来自直布罗陀海峡南岸，他堪比人形情报网络，紧密地监视着敌人的一举一动。在他的眼皮底下没有秘密，也没有人能瞒天过海。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "震慑绊线",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_震慑绊线_icon.png",
+      "video": "C_震慑绊线_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "赛博囚笼",
+      "typeName": "基础技能",
+      "cost": "100",
+      "icon": "Q_赛博囚笼_icon.png",
+      "video": "Q_赛博囚笼_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "战术监控",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_战术监控_icon.png",
+      "video": "E_战术监控_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "神经取析",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_神经取析_icon.png",
+      "video": "X_神经取析_video.mp4"
+    }
+  ]
+}

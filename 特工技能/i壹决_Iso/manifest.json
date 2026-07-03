@@ -1,0 +1,48 @@
+{
+  "id": 23,
+  "name": "壹决",
+  "eName": "Iso",
+  "twName": "離索",
+  "role": "决斗",
+  "description": "“壹决”是华夏文明的后裔。他是枪斗的艺术家，战斗时仿佛沉浸在自我的心流中，将对手的抵抗悉数瓦解。他还能重构环境中的能量来阻挡子弹。战斗中的他时刻保持专注，并渴望与强敌一决高下。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "绝对屏障",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_绝对屏障_icon.png",
+      "video": "C_绝对屏障_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "稳态剥离",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "Q_稳态剥离_icon.png",
+      "video": "Q_稳态剥离_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "战斗心流",
+      "typeName": "招牌技能",
+      "cost": "150第一个充能免费，其余150",
+      "icon": "E_战斗心流_icon.png",
+      "video": "E_战斗心流_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "决斗通牒",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_决斗通牒_icon.png",
+      "video": "X_决斗通牒_video.mp4"
+    }
+  ]
+}

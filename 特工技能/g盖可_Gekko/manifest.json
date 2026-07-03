@@ -1,0 +1,48 @@
+{
+  "id": 21,
+  "name": "盖可",
+  "eName": "Gekko",
+  "twName": "蓋克",
+  "role": "先锋",
+  "description": "西海岸小伙“盖可”随身带着一群调皮捣蛋的小怪兽。这些小跟班们负责冲在战斗的最前方，给敌人制造各种麻烦。等到盖可追上来后，它们还能回到他身边，然后再次出击。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "嗨爆全场",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "C_嗨爆全场_icon.png",
+      "video": "C_嗨爆全场_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "顽皮搭档",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "Q_顽皮搭档_icon.png",
+      "video": "Q_顽皮搭档_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "炫晕光波",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_炫晕光波_icon.png",
+      "video": "E_炫晕光波_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "无敌超鲨",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_无敌超鲨_icon.png",
+      "video": "X_无敌超鲨_video.mp4"
+    }
+  ]
+}

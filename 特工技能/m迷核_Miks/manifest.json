@@ -1,0 +1,48 @@
+{
+  "id": 29,
+  "name": "迷核",
+  "eName": "Miks",
+  "twName": "Miks",
+  "role": "控场",
+  "description": "来自欧洲中南部的迷核能够操控纯粹的声波能量。凭借极具感染力的激情和独特的音波力量，他率领全队协同作战，定下战场的主导节奏。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "电音脉冲",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "C_电音脉冲_icon.png",
+      "video": "C_电音脉冲_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "共振谐律",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_共振谐律_icon.png",
+      "video": "Q_共振谐律_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "声波帷幕",
+      "typeName": "招牌技能",
+      "cost": "第一个充能免费，其余100",
+      "icon": "E_声波帷幕_icon.png",
+      "video": "E_声波帷幕_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "音脉强袭",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_音脉强袭_icon.png",
+      "video": "X_音脉强袭_video.mp4"
+    }
+  ]
+}

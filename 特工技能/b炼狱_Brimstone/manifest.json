@@ -1,0 +1,48 @@
+{
+  "id": 5,
+  "name": "炼狱",
+  "eName": "Brimstone",
+  "twName": "布史東",
+  "role": "控场",
+  "description": "“炼狱”来自美洲大陆，他能使用各种轨道武器来为团队提供精确支援和创造战术优势，是前线指挥官的不二人选。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "振奋信标",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_振奋信标_icon.png",
+      "video": "C_振奋信标_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "燃烧榴弹",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "Q_燃烧榴弹_icon.png",
+      "video": "Q_燃烧榴弹_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "空投烟幕",
+      "typeName": "招牌技能",
+      "cost": "100",
+      "icon": "E_空投烟幕_icon.png",
+      "video": "E_空投烟幕_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "天基光束",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_天基光束_icon.png",
+      "video": "X_天基光束_video.mp4"
+    }
+  ]
+}

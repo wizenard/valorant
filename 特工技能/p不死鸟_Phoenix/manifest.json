@@ -1,0 +1,48 @@
+{
+  "id": 6,
+  "name": "不死鸟",
+  "eName": "Phoenix",
+  "twName": "菲尼克斯",
+  "role": "决斗",
+  "description": "来自不列颠群岛的“不死鸟”举手投足中无处不洋溢着大牌明星风范，他就像一团耀眼的烈焰，动辄燃遍全场。对他来说，有没有后援不重要，冲锋陷阵时的派头更重要。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "火冒三丈",
+      "typeName": "基础技能",
+      "cost": "150",
+      "icon": "C_火冒三丈_icon.png",
+      "video": "C_火冒三丈_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "火热手感",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_火热手感_icon.png",
+      "video": "Q_火热手感_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "闪光曲球",
+      "typeName": "招牌技能",
+      "cost": "第一个充能免费，其余250",
+      "icon": "E_闪光曲球_icon.png",
+      "video": "E_闪光曲球_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "再火一回",
+      "typeName": "终极技能",
+      "cost": "6点大招点数",
+      "icon": "X_再火一回_icon.png",
+      "video": "X_再火一回_video.mp4"
+    }
+  ]
+}

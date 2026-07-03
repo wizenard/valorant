@@ -1,0 +1,48 @@
+{
+  "id": 1,
+  "name": "铁臂",
+  "eName": "Breach",
+  "twName": "叛奇",
+  "role": "先锋",
+  "description": "生化改造人“铁臂”来自北欧波罗的海西岸，他能够使用定向爆破和动能冲击从敌阵中强行打开一条通道。他从来不跟敌人讲道理，火力和爆破就是硬道理。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "剧震余波",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_剧震余波_icon.png",
+      "video": "C_剧震余波_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "闪点爆破",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "Q_闪点爆破_icon.png",
+      "video": "Q_闪点爆破_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "山崩地陷",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_山崩地陷_icon.png",
+      "video": "E_山崩地陷_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "惊雷卷地",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_惊雷卷地_icon.png",
+      "video": "X_惊雷卷地_video.mp4"
+    }
+  ]
+}

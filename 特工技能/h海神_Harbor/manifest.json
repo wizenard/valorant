@@ -1,0 +1,48 @@
+{
+  "id": 20,
+  "name": "海神",
+  "eName": "Harbor",
+  "twName": "哈泊",
+  "role": "控场",
+  "description": "“海神”来自印度洋沿岸，借助古代科技的力量，他能够灵活地控制水的形态，释放出激流和巨浪来保护队友或击溃敌人。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "乱涌",
+      "typeName": "基础技能",
+      "cost": "150",
+      "icon": "C_乱涌_icon.png",
+      "video": "C_乱涌_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "狂潮",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "Q_狂潮_icon.png",
+      "video": "Q_狂潮_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "海盾",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_海盾_icon.png",
+      "video": "E_海盾_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "怒涛",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_怒涛_icon.png",
+      "video": "X_怒涛_video.mp4"
+    }
+  ]
+}

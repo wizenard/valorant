@@ -1,0 +1,48 @@
+{
+  "id": 27,
+  "name": "幻棱",
+  "eName": "Waylay",
+  "twName": "維蕾",
+  "role": "决斗",
+  "description": "来自暹罗湾北岸的“幻棱”是一名拥有棱晶能力的源能者，可以将自己变幻成光，在战场上穿梭自如，通过棱光碎片将敌人击倒后迅速撤退到安全区。眨眼之间，胜负已分。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "光棱闪爆",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "C_光棱闪爆_icon.png",
+      "video": "C_光棱闪爆_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "光速飞跃",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "Q_光速飞跃_icon.png",
+      "video": "Q_光速飞跃_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "溯流回光",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_溯流回光_icon.png",
+      "video": "E_溯流回光_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "时光修罗场",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_时光修罗场_icon.png",
+      "video": "X_时光修罗场_video.mp4"
+    }
+  ]
+}

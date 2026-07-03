@@ -1,0 +1,48 @@
+{
+  "id": 22,
+  "name": "钢锁",
+  "eName": "Deadlock",
+  "twName": "蒂羅",
+  "role": "哨卫",
+  "description": "来自北欧的特工“钢锁”配备着多种尖端纳米纤维武器，她擅长监听战场动态和阻碍对手移动。一旦敌人遭到锁定，将面对她凌厉无情的攻势并难逃一劫。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "阻域屏障",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "C_阻域屏障_icon.png",
+      "video": "C_阻域屏障_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "声感陷阱",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "Q_声感陷阱_icon.png",
+      "video": "Q_声感陷阱_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "重力捕网",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_重力捕网_icon.png",
+      "video": "E_重力捕网_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "断魂索道",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_断魂索道_icon.png",
+      "video": "X_断魂索道_video.mp4"
+    }
+  ]
+}

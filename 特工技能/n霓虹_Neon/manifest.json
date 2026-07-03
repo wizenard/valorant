@@ -1,0 +1,48 @@
+{
+  "id": 18,
+  "name": "霓虹",
+  "eName": "Neon",
+  "twName": "妮虹",
+  "role": "决斗",
+  "description": "来自西太平洋群岛的“霓虹”拥有惊人的速度，可以在运动中产生和释放生物电能量。她擅长利用快速机动，以闪电般的效率把敌人打得措手不及。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "高速通道",
+      "typeName": "基础技能",
+      "cost": "300",
+      "icon": "C_高速通道_icon.png",
+      "video": "C_高速通道_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "闪电弹球",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_闪电弹球_icon.png",
+      "video": "Q_闪电弹球_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "充能疾驰",
+      "typeName": "招牌技能",
+      "cost": "150",
+      "icon": "E_充能疾驰_icon.png",
+      "video": "E_充能疾驰_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "超限暴走",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_超限暴走_icon.png",
+      "video": "X_超限暴走_video.mp4"
+    }
+  ]
+}

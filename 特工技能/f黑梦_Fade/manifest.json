@@ -1,0 +1,48 @@
+{
+  "id": 19,
+  "name": "黑梦",
+  "eName": "Fade",
+  "twName": "菲德",
+  "role": "先锋",
+  "description": "“黑梦”是来自小亚细亚地区的赏金猎人，她能够操纵纯粹的噩梦能量，揭开他人心底潜藏的恐惧和秘密。她会如梦魇般对敌人穷追不舍，然后在黑暗中将其摧毁殆尽。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "黯兽",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "C_黯兽_icon.png",
+      "video": "C_黯兽_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "幽爪",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_幽爪_icon.png",
+      "video": "Q_幽爪_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "诡眼",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_诡眼_icon.png",
+      "video": "E_诡眼_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "夜临",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_夜临_icon.png",
+      "video": "X_夜临_video.mp4"
+    }
+  ]
+}

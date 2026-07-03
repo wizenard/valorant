@@ -1,0 +1,48 @@
+{
+  "id": 8,
+  "name": "猎枭",
+  "eName": "Sova",
+  "twName": "蘇法",
+  "role": "先锋",
+  "description": "”猎枭“生长于终年严寒的北方冻原。他能够精准而高效地追踪、锁定和歼灭敌人。凭借一把特制战弓和无与伦比的侦察能力，他能让猎物无所遁形、无处可逃。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "枭型无人机",
+      "typeName": "基础技能",
+      "cost": "400",
+      "icon": "C_枭型无人机_icon.png",
+      "video": "C_枭型无人机_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "雷击箭",
+      "typeName": "基础技能",
+      "cost": "150",
+      "icon": "Q_雷击箭_icon.png",
+      "video": "Q_雷击箭_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "寻敌箭",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_寻敌箭_icon.png",
+      "video": "E_寻敌箭_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "狂猎之怒",
+      "typeName": "终极技能",
+      "cost": "8点大招点数",
+      "icon": "X_狂猎之怒_icon.png",
+      "video": "X_狂猎之怒_video.mp4"
+    }
+  ]
+}

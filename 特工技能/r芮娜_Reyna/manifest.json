@@ -1,0 +1,48 @@
+{
+  "id": 11,
+  "name": "芮娜",
+  "eName": "Reyna",
+  "twName": "蕾娜",
+  "role": "决斗",
+  "description": "“芮娜”的威名铸就于马德雷山脉。虽然初始技能有所限制，但她能在狭路相逢的决斗中变得越来越强，直至觉醒强大的超能力，这使得她的实战表现格外重要。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "睥睨",
+      "typeName": "基础技能",
+      "cost": "250",
+      "icon": "C_睥睨_icon.png",
+      "video": "C_睥睨_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "噬尽",
+      "typeName": "招牌技能",
+      "cost": "200",
+      "icon": "Q_噬尽_icon.png",
+      "video": "Q_噬尽_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "逐散",
+      "typeName": "招牌技能",
+      "cost": "200",
+      "icon": "E_逐散_icon.png",
+      "video": "E_逐散_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "女皇旨令",
+      "typeName": "终极技能",
+      "cost": "7点大招点数",
+      "icon": "X_女皇旨令_icon.png",
+      "video": "X_女皇旨令_video.mp4"
+    }
+  ]
+}

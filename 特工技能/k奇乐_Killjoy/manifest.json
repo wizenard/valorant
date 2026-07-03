@@ -1,0 +1,48 @@
+{
+  "id": 12,
+  "name": "奇乐",
+  "eName": "Killjoy",
+  "twName": "愷宙",
+  "role": "哨卫",
+  "description": "“奇乐”是来自莱茵河畔的天才发明家，她擅长使用陷阱、炮台和地雷来控制和防守战场上的关键位置。敌人若是不懂知难而退，便会发现这些装置个头虽小，制造的麻烦却很大。",
+  "portrait": "portrait.png",
+  "background": "background.png",
+  "skills": [
+    {
+      "key": "C",
+      "slotKey": "C",
+      "name": "纳米蜂群",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "C_纳米蜂群_icon.png",
+      "video": "C_纳米蜂群_video.mp4"
+    },
+    {
+      "key": "Q",
+      "slotKey": "Q",
+      "name": "自动哨兵",
+      "typeName": "基础技能",
+      "cost": "200",
+      "icon": "Q_自动哨兵_icon.png",
+      "video": "Q_自动哨兵_video.mp4"
+    },
+    {
+      "key": "E",
+      "slotKey": "E",
+      "name": "哨戒炮台",
+      "typeName": "招牌技能",
+      "cost": "免费",
+      "icon": "E_哨戒炮台_icon.png",
+      "video": "E_哨戒炮台_video.mp4"
+    },
+    {
+      "key": "X",
+      "slotKey": "X",
+      "name": "全面封锁",
+      "typeName": "终极技能",
+      "cost": "9点大招点数",
+      "icon": "X_全面封锁_icon.png",
+      "video": "X_全面封锁_video.mp4"
+    }
+  ]
+}
