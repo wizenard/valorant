@@ -1070,7 +1070,7 @@ function renderMaps() {
     const checked = map.slug === currentMapSlug ? ' on' : '';
     return '<button class="map-side-item' + checked + '" type="button" onclick="openMap(\'' + map.slug + '\')">'
       + '<img src="' + map.splash + '" alt="' + escapeHtml(map.name) + '" loading="lazy">'
-      + '<span><span class="n">' + escapeHtml(map.name) + '</span><span class="s">' + escapeHtml(map.eName) + '</span></span>'
+      + '<span><span class="n">' + escapeHtml(map.name) + '</span><span class="s">' + escapeHtml(map.eName) + ' <em class="map-mode-badge">' + escapeHtml(map.category) + '</em></span></span>'
       + '</button>';
   }).join('');
 }
